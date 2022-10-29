@@ -1,16 +1,16 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
-
 import '../../utils/app_colors.dart';
 
 // ignore: must_be_immutable
 class BottomBarContainer extends StatelessWidget {
-   Color? colors;
-   Function? onTap;
-   String? title;
-   IconData? icons;
-   String? imageIcon;
+  Color? colors;
+  Function? onTap;
+  String? title;
+  IconData? icons;
+  String? imageIcon;
 
-   BottomBarContainer(
+  BottomBarContainer(
       {Key? key,
       this.onTap,
       this.title,
@@ -22,12 +22,11 @@ class BottomBarContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(0.0),
-       width: MediaQuery.of(context).size.width / 4,
+      width: MediaQuery.of(context).size.width / 4,
       child: InkWell(
-        onTap: ()=> onTap!(),
+        onTap: () => onTap!(),
         child: Column(
           children: [
-            //
             imageIcon == null
                 ? Icon(icons, color: kWhiteColor)
                 : SizedBox(

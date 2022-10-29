@@ -1,3 +1,4 @@
+import 'package:editor/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 sliderWidget(
@@ -14,8 +15,9 @@ sliderWidget(
       divisions: division,
       activeColor:const Color(0xff71DECA),
       thumbColor: Colors.white,
+
       label: value.toStringAsFixed(0),
-      inactiveColor:const Color(0xffFFFCFF).withOpacity(0.2),
+      inactiveColor:kWhiteColor.withOpacity(0.2),
       onChanged: (double newValue) {
         onPressed(newValue);
       },

@@ -15,17 +15,15 @@ import 'Editor/image_editor_pro.dart';
 class MyCreative extends StatefulWidget {
   const MyCreative({Key? key}) : super(key: key);
 
-
   @override
   _MyCreativeState createState() => _MyCreativeState();
 }
 
 class _MyCreativeState extends State<MyCreative> {
   String? directory;
-  List file =  [];
+  List file = [];
   RxBool isLoading = true.obs;
   void listOfFiles() async {
-
     try {
       directory = (await getApplicationDocumentsDirectory()).path;
       file = io.Directory("$directory/").listSync();
@@ -54,17 +52,23 @@ class _MyCreativeState extends State<MyCreative> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-
         body: Container(
             padding: const EdgeInsets.symmetric(vertical: 10),
             width: double.infinity,
             height: double.infinity,
-            decoration:  isColors?BoxDecoration(
-                gradient: LinearGradient(colors: isDark?darkColors[selectedElement]: lightColors[selectedElement],end: Alignment.bottomRight,begin: Alignment.topLeft)
-            ) : BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(imageThemes[selectedElement].smallImage),
-                    fit: BoxFit.fill)),
+            decoration: isColors
+                ? BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: isDark
+                            ? darkColors[selectedElement]
+                            : lightColors[selectedElement],
+                        end: Alignment.bottomRight,
+                        begin: Alignment.topLeft))
+                : BoxDecoration(
+                    image: DecorationImage(
+                        image:
+                            AssetImage(imageThemes[selectedElement].smallImage),
+                        fit: BoxFit.fill)),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -85,7 +89,7 @@ class _MyCreativeState extends State<MyCreative> {
                         flex: 5,
                         child: Center(
                           child: Text(
-                            'My Creative',
+                            'My Creative'.tr,
                             style:
                                 myTextStyle(18, FontWeight.w600, kWhiteColor),
                           ),
@@ -101,69 +105,71 @@ class _MyCreativeState extends State<MyCreative> {
                     ]),
                   ),
                   Obx(() => isLoading.value
-                      ?  const Center(child: CircularProgressIndicator(),) :file.isEmpty? SizedBox(
-
-                       width: Get.width,
-                        height: Get.height*0.8,
-                        child: Center(
-                            child: Text(
-                              'No Data',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: kWhiteColor
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : file.isEmpty
+                          ? SizedBox(
+                              width: Get.width,
+                              height: Get.height * 0.8,
+                              child: Center(
+                                child: Text(
+                                  'No Data'.tr,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: kWhiteColor),
+                                ),
                               ),
-                            ),
-                          ),
-                      )
-                      : ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: file.length,
-                          itemBuilder: (ctx, i) {
-                            return ListTile(
-                              leading: CircleAvatar(
-                                  radius: 20,
-                                  backgroundImage: FileImage(
-                                      File(file[i].path))),
-                              title: Text(
-                                path.basename(file[i].path),
-                                style: TextStyle(color: kWhiteColor),
-                              ),
-                              trailing: SizedBox(
-                                width: 100,
-                                child: Row(children: [
-                                  IconButton(
-                                      onPressed: () {
-                                        Get.off(
-                                          () => ImageEditorPro(
-                                            appBarColor: Colors.black87,
-                                            bottomBarColor: Colors.black87,
-                                            pathSave:
-                                                io.Directory("$directory/"),
-                                            galleryImage: file[i],
-                                          ),
-                                        );
-                                      },
-                                      icon: Icon(
-                                        Icons.edit,
-                                        color: kWhiteColor,
-                                      )),
-                                  IconButton(
-                                      onPressed: () async {
-                                        await File(file[i].path).delete();
-                                        file.removeAt(i);
-                                        setState(() {});
-                                      },
-                                      icon: const Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      ))
-                                ]),
-                              ),
-                            );
-                          },
-                        )),
+                            )
+                          : ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: file.length,
+                              itemBuilder: (ctx, i) {
+                                return ListTile(
+                                  leading: CircleAvatar(
+                                      radius: 20,
+                                      backgroundImage:
+                                          FileImage(File(file[i].path))),
+                                  title: Text(
+                                    path.basename(file[i].path),
+                                    style: TextStyle(color: kWhiteColor),
+                                  ),
+                                  trailing: SizedBox(
+                                    width: 100,
+                                    child: Row(children: [
+                                      IconButton(
+                                          onPressed: () {
+                                            Get.off(
+                                              () => ImageEditorPro(
+                                                appBarColor: Colors.black87,
+                                                bottomBarColor: Colors.black87,
+                                                pathSave:
+                                                    io.Directory("$directory/"),
+                                                galleryImage: file[i],
+                                              ),
+                                            );
+                                          },
+                                          icon: Icon(
+                                            Icons.edit,
+                                            color: kWhiteColor,
+                                          )),
+                                      IconButton(
+                                          onPressed: () async {
+                                            await File(file[i].path).delete();
+                                            file.removeAt(i);
+                                            setState(() {});
+                                          },
+                                          icon: const Icon(
+                                            Icons.delete,
+                                            color: Colors.red,
+                                          ))
+                                    ]),
+                                  ),
+                                );
+                              },
+                            )),
                 ],
               ),
             )),

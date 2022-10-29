@@ -20,24 +20,22 @@ class _ThemeScreenState extends State<ThemeScreen> {
     prefs = await SharedPreferences.getInstance();
   }
 
-  updatePreferences(bool isColor, int index,{bool isDarkColor = false}) {
-
+  updatePreferences(bool isColor, int index, {bool isDarkColor = false}) {
     isColors = isColor;
     isDark = isDarkColor;
 
-    if(isDark){
+    if (isDark) {
       kWhiteColor = Colors.white;
-    }else{
+    } else {
       kWhiteColor = Colors.black;
     }
     selectedElement = index;
 
-    if(!isColors){
+    if (!isColors) {
       kWhiteColor = imageThemes[index].color;
     }
     prefs.setBool('isColor', isColor);
     prefs.setBool('isDark', isDark);
-
 
     prefs.setInt('element', index);
 
@@ -46,7 +44,6 @@ class _ThemeScreenState extends State<ThemeScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getPreferences();
   }
@@ -59,12 +56,19 @@ class _ThemeScreenState extends State<ThemeScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           width: double.infinity,
           height: double.infinity,
-          decoration: isColors?BoxDecoration(
-              gradient: LinearGradient(colors: isDark? darkColors[selectedElement]: lightColors[selectedElement],end: Alignment.bottomRight,begin: Alignment.topLeft)
-          ) : BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(imageThemes[selectedElement].largeImage),
-                  fit: BoxFit.fill)),
+          decoration: isColors
+              ? BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: isDark
+                          ? darkColors[selectedElement]
+                          : lightColors[selectedElement],
+                      end: Alignment.bottomRight,
+                      begin: Alignment.topLeft))
+              : BoxDecoration(
+                  image: DecorationImage(
+                      image:
+                          AssetImage(imageThemes[selectedElement].largeImage),
+                      fit: BoxFit.fill)),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,23 +118,26 @@ class _ThemeScreenState extends State<ThemeScreen> {
                       itemCount: lightColors.length,
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                        itemBuilder: (ctx, i) {
+                      itemBuilder: (ctx, i) {
                         return InkWell(
-                          onTap: (){
-                            updatePreferences(true, i,isDarkColor: false);
+                          onTap: () {
+                            updatePreferences(true, i, isDarkColor: false);
                           },
                           child: Container(
                             width: 50,
                             height: 40,
                             margin: const EdgeInsets.only(right: 5),
                             decoration: BoxDecoration(
-                                border: Border.all(color: isColors && !isDark && selectedElement == i ?kWhiteColor:Colors.transparent ),
-
+                                border: Border.all(
+                                    color: isColors &&
+                                            !isDark &&
+                                            selectedElement == i
+                                        ? kWhiteColor
+                                        : Colors.transparent),
                                 gradient: LinearGradient(
-                                  colors: lightColors[i],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight
-                                ),
+                                    colors: lightColors[i],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight),
                                 borderRadius: BorderRadius.circular(4)),
                           ),
                         );
@@ -155,20 +162,24 @@ class _ThemeScreenState extends State<ThemeScreen> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (ctx, i) {
                         return InkWell(
-                          onTap: (){
-                            updatePreferences(true, i,isDarkColor: true);
+                          onTap: () {
+                            updatePreferences(true, i, isDarkColor: true);
                           },
                           child: Container(
                             width: 50,
                             height: 40,
                             margin: const EdgeInsets.only(right: 5),
                             decoration: BoxDecoration(
-                                border: Border.all(color: isColors && isDark && selectedElement == i ?kWhiteColor:Colors.transparent ),
+                                border: Border.all(
+                                    color: isColors &&
+                                            isDark &&
+                                            selectedElement == i
+                                        ? kWhiteColor
+                                        : Colors.transparent),
                                 gradient: LinearGradient(
                                     colors: darkColors[i],
                                     begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight
-                                ),
+                                    end: Alignment.bottomRight),
                                 borderRadius: BorderRadius.circular(4)),
                           ),
                         );
@@ -177,7 +188,6 @@ class _ThemeScreenState extends State<ThemeScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-
                 Text(
                   'Wallpapers',
                   style: myTextStyle(18, FontWeight.w600, kWhiteColor),
@@ -192,26 +202,24 @@ class _ThemeScreenState extends State<ThemeScreen> {
                       itemCount: imageThemes.length,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          childAspectRatio: 0.65,
-                          crossAxisCount: 3,
-                          mainAxisSpacing: 4,
-                          crossAxisSpacing: 4),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              childAspectRatio: 0.65,
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 4,
+                              crossAxisSpacing: 4),
                       itemBuilder: (ctx, i) {
                         return GestureDetector(
-                          onTap: () {
-                            updatePreferences(false, i,isDarkColor: true);
-
-
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(5.0),
-                            child: Image.asset(
-                              imageThemes[i].largeImage,
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        );
+                            onTap: () {
+                              updatePreferences(false, i, isDarkColor: true);
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5.0),
+                              child: Image.asset(
+                                imageThemes[i].largeImage,
+                                fit: BoxFit.cover,
+                              ),
+                            ));
                       }),
                 ),
               ],

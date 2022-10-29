@@ -50,7 +50,8 @@ class _CollageScreenState extends State<CollageScreen> {
         Get.back();
         Get.to(() => PhotoCollegeView(photoCollegeLayout[index], images));
       } else {
-        Get.snackbar('Incorrect', 'Please select $imagesLength images',
+        Get.snackbar('Incorrect'.tr,
+            'Please select'.tr + '$imagesLength ' + 'images!'.tr,
             colorText: Colors.white, backgroundColor: Colors.black);
       }
     }
@@ -60,17 +61,23 @@ class _CollageScreenState extends State<CollageScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-
           body: Container(
               padding: const EdgeInsets.all(5),
               width: double.infinity,
               height: double.infinity,
-              decoration:isColors?BoxDecoration(
-                  gradient: LinearGradient(colors: isDark?darkColors[selectedElement]: lightColors[selectedElement],end: Alignment.bottomRight,begin: Alignment.topLeft)
-              ) : BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(imageThemes[selectedElement].largeImage),
-                      fit: BoxFit.fill)),
+              decoration: isColors
+                  ? BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: isDark
+                              ? darkColors[selectedElement]
+                              : lightColors[selectedElement],
+                          end: Alignment.bottomRight,
+                          begin: Alignment.topLeft))
+                  : BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(
+                              imageThemes[selectedElement].largeImage),
+                          fit: BoxFit.fill)),
               child: SingleChildScrollView(
                 child: Column(children: [
                   SizedBox(
@@ -83,14 +90,15 @@ class _CollageScreenState extends State<CollageScreen> {
                           onPressed: () {
                             Get.back();
                           },
-                          icon: const Icon(Icons.arrow_back, color: Colors.white),
+                          icon:
+                              const Icon(Icons.arrow_back, color: Colors.white),
                         ),
                       ),
                       Expanded(
                         flex: 5,
                         child: Center(
                           child: Text(
-                            'Choose Photo College',
+                            'Choose Photo College'.tr,
                             style:
                                 myTextStyle(18, FontWeight.w600, kWhiteColor),
                           ),
@@ -107,10 +115,11 @@ class _CollageScreenState extends State<CollageScreen> {
                   ),
                   GridView.builder(
                     itemCount: layoutPaths.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 8,
-                        crossAxisSpacing: 8),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 8,
+                            crossAxisSpacing: 8),
                     itemBuilder: (ctx, i) {
                       return InkWell(
                         onTap: () {
@@ -149,7 +158,7 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
-    College(tiles: const[
+    College(tiles: const [
       StaggeredTile.count(2, 1),
       StaggeredTile.count(1, 2),
       StaggeredTile.count(1, 2),
@@ -162,14 +171,14 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 3, crossAxisSpacing: 4),
-    College(tiles: const[
+    College(tiles: const [
       StaggeredTile.count(2, 3),
       StaggeredTile.count(2, 3),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
-    College(tiles: const[
+    College(tiles: const [
       StaggeredTile.count(1, 1),
       StaggeredTile.count(2, 3),
       StaggeredTile.count(1, 1),
@@ -186,14 +195,14 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
-    College(tiles: const[
+    College(tiles: const [
       StaggeredTile.count(4, 2),
       StaggeredTile.count(4, 2),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
-    College(tiles:const [
+    College(tiles: const [
       StaggeredTile.count(2, 3),
       StaggeredTile.count(1, 1),
       StaggeredTile.count(1, 1),
@@ -204,7 +213,7 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 3, crossAxisSpacing: 4),
-    College(tiles: const[
+    College(tiles: const [
       StaggeredTile.count(2, 2),
       StaggeredTile.count(1, 1),
       StaggeredTile.count(1, 1),
@@ -217,7 +226,7 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
-    College(tiles: const[
+    College(tiles: const [
       StaggeredTile.count(2, 2),
       StaggeredTile.count(2, 2),
       StaggeredTile.count(1, 1),
@@ -232,7 +241,7 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
-    College(tiles: const[
+    College(tiles: const [
       StaggeredTile.count(4, 2),
       StaggeredTile.count(1, 1),
       StaggeredTile.count(1, 1),
@@ -245,7 +254,7 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
-    College(tiles: const[
+    College(tiles: const [
       StaggeredTile.count(2, 2),
       StaggeredTile.count(1, 1),
       StaggeredTile.count(1, 1),
@@ -260,7 +269,7 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 3, crossAxisSpacing: 4),
-    College(tiles:const [
+    College(tiles: const [
       StaggeredTile.count(1, 1),
       StaggeredTile.count(1, 1),
       StaggeredTile.count(1, 1),
@@ -275,7 +284,7 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 3, crossAxisSpacing: 4),
-    College(tiles: const[
+    College(tiles: const [
       StaggeredTile.count(1, 1),
       StaggeredTile.count(3, 2),
       StaggeredTile.count(1, 1),
@@ -304,7 +313,7 @@ class _CollageScreenState extends State<CollageScreen> {
     Get.bottomSheet(Container(
       width: double.infinity,
       height: Get.height * 0.3,
-      decoration:const BoxDecoration(
+      decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(8), topRight: Radius.circular(8))),
@@ -313,18 +322,20 @@ class _CollageScreenState extends State<CollageScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "Please select ${photoCollegeLayout[i].children.length} images!",
+            "Please select".tr +
+                " ${photoCollegeLayout[i].children.length} " +
+                "images!".tr,
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
           const SizedBox(
             height: 20,
           ),
           MaterialButton(
-            shape:const OutlineInputBorder(),
+            shape: const OutlineInputBorder(),
             onPressed: () {
               takeGalleryImage(photoCollegeLayout[i].children.length, i);
             },
-            child: const Text('Select Images'),
+            child: Text('Select Images'.tr),
           )
         ],
       ),
@@ -335,7 +346,7 @@ class _CollageScreenState extends State<CollageScreen> {
 buildPhotoContainer() {
   return Container(
     // color: Colors.teal,
-    decoration:const BoxDecoration(
+    decoration: const BoxDecoration(
         image: DecorationImage(
             fit: BoxFit.fill,
             image: NetworkImage(
@@ -376,10 +387,10 @@ class _PhotoCollegeViewState extends State<PhotoCollegeView> {
   void onSave() async {
     PermissionStatus p = await Permission.storage.request();
 
-     bool isGranted = p.isGranted;
+    bool isGranted = p.isGranted;
 
-     if (!isGranted) {
-       PermissionStatus p1 = await Permission.storage.request();
+    if (!isGranted) {
+      PermissionStatus p1 = await Permission.storage.request();
 
       if (p1.isGranted) {
         isGranted = true;
@@ -387,29 +398,23 @@ class _PhotoCollegeViewState extends State<PhotoCollegeView> {
     }
 
     if (isGranted) {
-
       _screenshotController
           .capture(pixelRatio: 1.5)
           .then((binaryIntList) async {
-
         final paths = await getApplicationDocumentsDirectory();
 
-          final file =
+        final file =
             await File('${paths.path}/' + DateTime.now().toString() + '.jpg')
                 .create();
 
-
-
         file.writeAsBytesSync(binaryIntList!);
         GallerySaver.saveImage(file.path).then((success) async {
-          Get.snackbar('Success', 'Image Saved',
+          Get.snackbar('Success'.tr, 'Image Saved'.tr,
               snackPosition: SnackPosition.TOP,
               backgroundColor: kPrimaryColor,
               colorText: Colors.white);
         });
-        }).catchError((onError) {
-
-      });
+      }).catchError((onError) {});
     }
   }
 
@@ -428,12 +433,19 @@ class _PhotoCollegeViewState extends State<PhotoCollegeView> {
         body: Container(
           width: Get.width,
           height: double.infinity,
-          decoration: isColors?BoxDecoration(
-              gradient: LinearGradient(colors: isDark?darkColors[selectedElement]: lightColors[selectedElement],end: Alignment.bottomRight,begin: Alignment.topLeft)
-          ) : BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(imageThemes[selectedElement].largeImage),
-                  fit: BoxFit.fill)),
+          decoration: isColors
+              ? BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: isDark
+                          ? darkColors[selectedElement]
+                          : lightColors[selectedElement],
+                      end: Alignment.bottomRight,
+                      begin: Alignment.topLeft))
+              : BoxDecoration(
+                  image: DecorationImage(
+                      image:
+                          AssetImage(imageThemes[selectedElement].largeImage),
+                      fit: BoxFit.fill)),
           child: Column(children: [
             Row(
               children: [
@@ -441,7 +453,7 @@ class _PhotoCollegeViewState extends State<PhotoCollegeView> {
                     onPressed: () {
                       Get.back();
                     },
-                    icon:const Icon(
+                    icon: const Icon(
                       Icons.arrow_back,
                       color: Colors.white,
                     ))
@@ -449,15 +461,14 @@ class _PhotoCollegeViewState extends State<PhotoCollegeView> {
             ),
             Screenshot(
               controller: _screenshotController,
-
               child: Container(
-                padding:const EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Card(
                   child: Container(
-                    margin:const EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     child: StaggeredGridView.count(
                       shrinkWrap: true,
-                      physics:const NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       crossAxisCount: widget.college.crossAxisCount,
                       mainAxisSpacing: widget.college.mainAxisSpacing,
                       crossAxisSpacing: widget.college.crossAxisSpacing,
@@ -470,15 +481,15 @@ class _PhotoCollegeViewState extends State<PhotoCollegeView> {
                 ),
               ),
             ),
-            const  SizedBox(
+            const SizedBox(
               height: 30,
             ),
             MaterialButton(
-              shape:const OutlineInputBorder(
+              shape: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white)),
               onPressed: onSave,
-              child:const Text(
-                "Save",
+              child: Text(
+                "Save".tr,
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),

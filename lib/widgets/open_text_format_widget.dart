@@ -55,7 +55,7 @@ openTextFormatWidget({Function? onBack, Widget? title,Function? onUpdate}) {
                     width: 22,
                     height: 22,
                     child: Image.asset(
-                        'images/newIcons/left-align (4) 1.png')),
+                        'images/newIcons/left-align (4) 1.png',color: kWhiteColor,)),
                 const SizedBox(
                   height: 5,
                 ),
@@ -83,7 +83,7 @@ openTextFormatWidget({Function? onBack, Widget? title,Function? onUpdate}) {
                     width: 22,
                     height: 22,
                     child: Image.asset(
-                        'images/newIcons/center-align (3) 1.png')),
+                        'images/newIcons/center-align (3) 1.png',color: kWhiteColor,)),
                const SizedBox(
                   height: 5,
                 ),
@@ -111,7 +111,7 @@ openTextFormatWidget({Function? onBack, Widget? title,Function? onUpdate}) {
                     width: 22,
                     height: 22,
                     child: Image.asset(
-                        'images/newIcons/left-align (5) 1.png')),
+                        'images/newIcons/left-align (5) 1.png',color: kWhiteColor,)),
                const SizedBox(
                   height: 5,
                 ),

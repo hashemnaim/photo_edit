@@ -1,3 +1,4 @@
+import 'package:editor/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
@@ -60,10 +61,10 @@ openTextColorWidget(context,
                   width: 28,
                   height: 28,
                   padding: const EdgeInsets.all(4),
-                  child: Image.asset('images/newIcons/color-picker (1) 1.png'),
+                  child: Image.asset('images/newIcons/color-picker (1) 1.png',color: kWhiteColor,),
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: const Color(0xff71DECAC9), width: 2),
+                          color: kWhiteColor, width: 2),
                       borderRadius: BorderRadius.circular(4)),
                 ),
               ),

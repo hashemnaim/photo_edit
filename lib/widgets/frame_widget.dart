@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import '../utils/app_colors.dart';
+
 SingleChildScrollView openFramesWidget(
     {Function? onTap,
     Widget? title,
@@ -75,10 +77,10 @@ SingleChildScrollView openFramesWidget(
                                     color:const Color(0xff076994)
                                         .withOpacity(0.5))),
                             child: i - 1 == -1
-                                ?const Center(
+                                ?  Center(
                               child: Text(
                                 "None",
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: kWhiteColor),
                               ),
                             )
                                 : Container(

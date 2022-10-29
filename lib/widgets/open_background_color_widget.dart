@@ -81,10 +81,10 @@ openBackgroundColorWidget(context,{required Function? onBack,required Widget? ti
                   height: 28,
                   padding:const EdgeInsets.all(4),
                   child:
-                  Image.asset('images/newIcons/color-picker (1) 1.png'),
+                  Image.asset('images/newIcons/color-picker (1) 1.png',color: kWhiteColor,),
                   decoration: BoxDecoration(
                       border:
-                      Border.all(color:const Color(0xff71DECAC9), width: 2),
+                      Border.all(color:kWhiteColor, width: 2),
                       borderRadius: BorderRadius.circular(4)),
                 ),
               ),

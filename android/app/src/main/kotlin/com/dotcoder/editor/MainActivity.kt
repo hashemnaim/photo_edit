@@ -1,4 +1,4 @@
-package com.dotcoder.editor
+package com.designer.almosamem
 
 import io.flutter.embedding.android.FlutterActivity
 

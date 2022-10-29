@@ -1,3 +1,4 @@
+import 'package:editor/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -79,7 +80,7 @@ SingleChildScrollView openFontFamilyWidget({Function? onBack,Widget? title,Funct
                     child: Text(myFontFamilyList[i].fontName!.split(' ')[0],
                         style: TextStyle(
                             fontFamily: myFontFamilyList[i].fontName,
-                            color: Colors.white,
+                            color: kWhiteColor,
                             fontSize: 16)),
                   ),
                 );

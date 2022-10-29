@@ -1,11 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-// import 'package:image/image.dart' as imageLib;
 import 'dart:math' as math;
 import 'package:editor/views/Editor/block_picker.dart' as block;
-
 import 'bottomBarContainer.dart' as b;
 import 'emojies_view.dart' as e;
 
@@ -133,33 +130,33 @@ class _ImageEditorProState extends State<ImageEditorPro> {
   Widget getTitle() {
     String title = '';
     if (openRotation) {
-      title = 'Rotation';
+      title = 'Rotation'.tr;
     } else if (openFilter) {
-      title = 'Filters';
+      title = 'Filters'.tr;
     } else if (openStickers) {
-      title = 'Stickers';
+      title = 'Stickers'.tr;
     } else if (openFrames) {
-      title = 'Frames';
+      title = 'Frames'.tr;
     } else if (openCurveText) {
-      title = 'Curve Text';
+      title = 'Curve Text'.tr;
     } else if (openTextOpacity) {
-      title = 'Text Opacity';
+      title = 'Text Opacity'.tr;
     } else if (openTextFormat) {
-      title = 'Text Alignment';
+      title = 'Text Alignment'.tr;
     } else if (openBackgroundColor) {
-      title = 'Background Color';
+      title = 'Background Color'.tr;
     } else if (openTextColor) {
-      title = 'Text Color';
+      title = 'Text Color'.tr;
     } else if (openResize) {
-      title = 'Resize';
+      title = 'Resize'.tr;
     } else if (openShadow) {
-      title = 'Shadow';
+      title = 'Shadow'.tr;
     } else if (openFontFamily) {
-      title = 'Fonts';
+      title = 'Fonts'.tr;
     } else if (openFonts) {
-      title = 'Styles';
+      title = 'Styles'.tr;
     } else {
-      title = 'Menu';
+      title = 'Menu'.tr;
     }
 
     return Text(
@@ -493,9 +490,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                                                                 ),
                                                               ),
                                                             ),
-
-
-                                                      Container(
+                                                      SizedBox(
                                                           width:
                                                               double.infinity,
                                                           child: BackdropFilter(
@@ -916,7 +911,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                   setState(() {});
                 });
               },
-              title: 'Crop',
+              title: 'Crop'.tr,
             ),
             b.BottomBarContainer(
               imageIcon: "images/newIcons/text-formatting 1.png",
@@ -924,7 +919,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                 openTextField = true;
                 setState(() {});
               },
-              title: 'Add Text',
+              title: 'Add Text'.tr,
             ),
             b.BottomBarContainer(
               imageIcon: "images/newIcons/text (1) 1.png",
@@ -934,19 +929,17 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                       colorText: Colors.white, backgroundColor: Colors.black);
                   return;
                 }
-
                 openFonts = true;
-
                 setState(() {});
               },
-              title: 'Styles',
+              title: 'Styles'.tr,
             ),
             b.BottomBarContainer(
               imageIcon: "images/newIcons/image.png",
               onTap: () {
                 selectImage();
               },
-              title: 'Add Image',
+              title: 'Add Image'.tr,
             ),
           ],
         ),
@@ -959,11 +952,11 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                 openFrames = true;
                 setState(() {});
               },
-              title: 'Frames',
+              title: 'Frames'.tr,
             ),
             b.BottomBarContainer(
               imageIcon: "images/newIcons/magic-tool (1) 1.png",
-              title: 'Effects',
+              title: 'Effects'.tr,
               onTap: () async {
                 openFilter = true;
                 setState(() {});
@@ -976,7 +969,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                   flipValue = flipValue == 0 ? math.pi : 0;
                 });
               },
-              title: 'Flip',
+              title: 'Flip'.tr,
             ),
             b.BottomBarContainer(
               imageIcon: "images/newIcons/rotation (2) 1.png",
@@ -984,7 +977,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                 openRotation = true;
                 setState(() {});
               },
-              title: 'Rotation',
+              title: 'Rotation'.tr,
             ),
           ],
         ),
@@ -997,7 +990,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                 openStickers = true;
                 setState(() {});
               },
-              title: 'Sticker',
+              title: 'Sticker'.tr,
             ),
             b.BottomBarContainer(
               imageIcon: "images/hearts.png",
@@ -1068,7 +1061,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                   ),
                 ));
               },
-              title: 'Emoji',
+              title: 'Emoji'.tr,
             ),
             b.BottomBarContainer(
               imageIcon: "images/newIcons/blur 1.png",
@@ -1100,7 +1093,6 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                                           imageThemes[selectedElement]
                                               .largeImage),
                                       fit: BoxFit.fill)),
-
                           child: Column(
                             children: [
                               Text(
@@ -1136,7 +1128,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                                 height: 5,
                               ),
                               Text(
-                                'Slider Opacity'.toUpperCase(),
+                                'Slider Opacity'.toUpperCase().tr,
                                 style: TextStyle(color: kWhiteColor),
                               ),
                               const SizedBox(
@@ -1166,7 +1158,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                                         });
                                       });
                                     },
-                                    child: const Text('Reset'),
+                                    child: Text('Reset'.tr),
                                   ),
                                 ],
                               ),
@@ -1178,7 +1170,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                   },
                 );
               },
-              title: 'Blur',
+              title: 'Blur'.tr,
             ),
           ],
         ),
@@ -1227,7 +1219,6 @@ class _ImageEditorProState extends State<ImageEditorPro> {
 
           setState(() {});
         },
-        // scrollControllerForYou: _scrollControllerForYou,
         onBack: () {
           setState(() {
             openStickers = false;
@@ -1647,7 +1638,8 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                       },
                       child: CircleAvatar(
                         radius: 15,
-                        backgroundColor: const Color(0xff1E4355).withOpacity(0.5),
+                        backgroundColor:
+                            const Color(0xff1E4355).withOpacity(0.5),
                         child: const Icon(
                           Icons.rotate_right,
                           size: 20,
@@ -1681,7 +1673,8 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                       },
                       child: CircleAvatar(
                         radius: 12,
-                        backgroundColor: const Color(0xff1E4355).withOpacity(0.5),
+                        backgroundColor:
+                            const Color(0xff1E4355).withOpacity(0.5),
                         child: const Icon(
                           Icons.open_in_full,
                           size: 20,

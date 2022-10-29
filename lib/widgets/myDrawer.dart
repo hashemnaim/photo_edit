@@ -1,8 +1,8 @@
+import 'package:editor/utils/s_helpar.dart';
 import 'package:editor/widgets/textStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 
 import '../utils/app_colors.dart';
 import '../utils/theme.dart';
@@ -25,12 +25,19 @@ class MyDrawer extends StatelessWidget {
             width: double.infinity,
             // margin: const EdgeInsets.only(top: 25),
             padding: const EdgeInsets.only(top: 20),
-            decoration:isColors?BoxDecoration(
-                gradient: LinearGradient(colors: isDark?darkColors[selectedElement]: lightColors[selectedElement],end: Alignment.bottomRight,begin: Alignment.topLeft)
-            ) : BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(imageThemes[selectedElement].largeImage),
-                    fit: BoxFit.fill)),
+            decoration: isColors
+                ? BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: isDark
+                            ? darkColors[selectedElement]
+                            : lightColors[selectedElement],
+                        end: Alignment.bottomRight,
+                        begin: Alignment.topLeft))
+                : BoxDecoration(
+                    image: DecorationImage(
+                        image:
+                            AssetImage(imageThemes[selectedElement].largeImage),
+                        fit: BoxFit.fill)),
             child: Column(
               children: [
                 SizedBox(
@@ -43,7 +50,7 @@ class MyDrawer extends StatelessWidget {
                 SizedBox(height: Get.height * 0.03),
                 _createDrawerItem(
                   image: 'images/newIcons/home 1.png',
-                  text: 'Home',
+                  text: 'Home'.tr,
                   onTap: () => Get.back(),
                 ),
                 _createDrawerItem(
@@ -52,22 +59,51 @@ class MyDrawer extends StatelessWidget {
                     onTap: () => Get.to(() => const CollageScreen())),
                 _createDrawerItem(
                   image: 'images/edit-image.png',
-                  text: 'My Create',
+                  text: 'My Creative',
                   onTap: () => Get.to(() => const MyCreative()),
                 ),
                 _createDrawerItem(
                     image: 'images/background.png',
-                    text: 'Backgrounds',
+                    text: 'Background',
                     onTap: () => Get.to(() => const BackgroundScreen())),
                 _createDrawerItem(
                     image: 'images/newIcons/page-layout 1.png',
-                    text: 'Templates',
+                    text: 'Template',
                     onTap: () => Get.to(() => const Template())),
+                ListTile(
+                  leading: SizedBox(
+                      height: 25,
+                      width: 25,
+                      child: Icon(
+                        Icons.language,
+                        color: kWhiteColor,
+                        size: 25,
+                      )),
+                  title: Text(
+                    "Languages".tr,
+                    style: myTextStyle(16, FontWeight.w300, kWhiteColor),
+                  ),
+                  trailing: Text(
+                    SHelper.sHelper.getLanguge().toString() == "ar"
+                        ? "عربى"
+                        : "English",
+                    style: myTextStyle(16, FontWeight.w300, kWhiteColor),
+                  ),
+                  onTap: () {
+                    if (SHelper.sHelper.getLanguge() == "ar") {
+                      SHelper.sHelper.setLanguge("en");
+                      Get.updateLocale(const Locale('en'));
+                    } else {
+                      SHelper.sHelper.setLanguge("ar");
+                      Get.updateLocale(const Locale('ar'));
+                    }
+                  },
+                ),
                 const SizedBox(
                   height: 10,
                 ),
-               const  Divider(
-                  color:   Color(0xff71DECA30),
+                const Divider(
+                  color: Color(0xff71deca30),
                 ),
                 const SizedBox(
                   height: 10,

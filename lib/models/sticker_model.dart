@@ -21,7 +21,6 @@ class SubSticker {
   }
 }
 
-
 class BackgroundModel {
   String? image;
   BackgroundModel({this.image});

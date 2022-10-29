@@ -31,21 +31,25 @@ class _BackgroundScreenState extends State<BackgroundScreen> {
     Colors.indigo,
   ];
 
-
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-
         body: Container(
           padding: const EdgeInsets.only(top: 10, left: 5, bottom: 10),
-          decoration: isColors?BoxDecoration(
-              gradient: LinearGradient(colors: isDark?darkColors[selectedElement]: lightColors[selectedElement],end: Alignment.bottomRight,begin: Alignment.topLeft)
-          ) : BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(imageThemes[selectedElement].largeImage),
-                  fit: BoxFit.fill)),
+          decoration: isColors
+              ? BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: isDark
+                          ? darkColors[selectedElement]
+                          : lightColors[selectedElement],
+                      end: Alignment.bottomRight,
+                      begin: Alignment.topLeft))
+              : BoxDecoration(
+                  image: DecorationImage(
+                      image:
+                          AssetImage(imageThemes[selectedElement].largeImage),
+                      fit: BoxFit.fill)),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -66,7 +70,7 @@ class _BackgroundScreenState extends State<BackgroundScreen> {
                       flex: 5,
                       child: Center(
                         child: Text(
-                          'Background',
+                          'Background'.tr,
                           style: myTextStyle(18, FontWeight.w600, kWhiteColor),
                         ),
                       ),
@@ -80,64 +84,59 @@ class _BackgroundScreenState extends State<BackgroundScreen> {
                     )
                   ]),
                 ),
-
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     const SizedBox(height: 10),
-                     StreamBuilder<QuerySnapshot>(
-                          stream: FirebaseFirestore.instance.collection('backgrounds').snapshots(),
-                          builder: (context, snapshot) {
-
-                            if(!snapshot.hasData){
-                              return SizedBox(
-                                width: double.infinity,
-                                height: Get.height * 0.6,
-                                child: const Center(child: CircularProgressIndicator()),
-                              );
-                            }
-
-                            final data = snapshot.data!.docs;
-
-                            return Container(
-                                margin: const EdgeInsets.symmetric(horizontal: 5),
-                                child: GridView.builder(
-                                    itemCount: data.length,
-                                    shrinkWrap: true,
-                                    physics: const NeverScrollableScrollPhysics(),
-                                    gridDelegate:
-                                       const SliverGridDelegateWithFixedCrossAxisCount(
-                                            childAspectRatio: 0.65,
-                                            crossAxisCount: 3,
-                                            mainAxisSpacing: 8,
-                                            crossAxisSpacing: 8),
-                                    itemBuilder: (ctx, i) {
-
-
-                                      BackgroundModel bg = BackgroundModel.fromJson(data[i].data());
-
-
-                                      return GestureDetector(
-                                        onTap: () {
-                                          Get.to(() => ImageEditorPro(
-                                                backgroundImagePath:
-                                                    bg.image!,
-                                              ));
-                                        },
-                                        child:  ClipRRect(
-                                          borderRadius:
-                                          BorderRadius.circular(5.0),
-                                          child: Image.network(
-                                            bg.image!,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      );
-                                    }),
-                              );
+                    StreamBuilder<QuerySnapshot>(
+                        stream: FirebaseFirestore.instance
+                            .collection('backgrounds')
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return SizedBox(
+                              width: double.infinity,
+                              height: Get.height * 0.6,
+                              child: const Center(
+                                  child: CircularProgressIndicator()),
+                            );
                           }
-                        ),
+
+                          final data = snapshot.data!.docs;
+
+                          return Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 5),
+                            child: GridView.builder(
+                                itemCount: data.length,
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        childAspectRatio: 0.65,
+                                        crossAxisCount: 3,
+                                        mainAxisSpacing: 8,
+                                        crossAxisSpacing: 8),
+                                itemBuilder: (ctx, i) {
+                                  BackgroundModel bg =
+                                      BackgroundModel.fromJson(data[i].data());
+
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Get.to(() => ImageEditorPro(
+                                            backgroundImagePath: bg.image!,
+                                          ));
+                                    },
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      child: Image.network(
+                                        bg.image!,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  );
+                                }),
+                          );
+                        }),
                   ],
                 ),
               ],

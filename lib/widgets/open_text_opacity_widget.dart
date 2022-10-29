@@ -63,7 +63,7 @@ openTextOpacityWidget({required Function? onBack,required Widget? title, require
                     activeColor:const  Color(0xff71DECA),
                     thumbColor: Colors.white,
                     label: textOpacity.toStringAsFixed(1),
-                    inactiveColor:const  Color(0xffFFFCFF).withOpacity(0.2),
+                    inactiveColor:kWhiteColor.withOpacity(0.2),
                     onChanged: (double newValue) {
                       TextModel currentJsonWidget = widgetJson
                           .firstWhere((element) => element.isEdit == true);
