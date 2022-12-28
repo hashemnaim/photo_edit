@@ -22,12 +22,11 @@ Map<String, String> en = {
   "Filters": "Filters",
   "Rotation": "Rotation",
   "Success": "Success",
- "Image Saved": "Image Saved",
+  "Languages": "Languages",
+  "Image Saved": "Image Saved",
   "Choose Photo College": "Choose Photo College",
-   "text is empty": "text is empty",
+  "text is empty": "text is empty",
   "Text On Photo": "Text On Photo",
-   "Got it": "Got it",
-  "Pick a color!": "Pick a color!",
-  
- 
+  "Got it": "Got it",
+  "Pick a color!": "Pick a color!"
 };

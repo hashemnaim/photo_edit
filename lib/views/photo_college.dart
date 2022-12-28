@@ -148,10 +148,10 @@ class _CollageScreenState extends State<CollageScreen> {
 
   List<College> photoCollegeLayout = [
     College(tiles: const [
-      StaggeredTile.count(2, 2),
-      StaggeredTile.count(2, 2),
-      StaggeredTile.count(2, 2),
-      StaggeredTile.count(2, 2),
+      // StaggeredTile.count(2, 2),
+      // StaggeredTile.count(2, 2),
+      // StaggeredTile.count(2, 2),
+      // StaggeredTile.count(2, 2),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
@@ -159,11 +159,11 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
     College(tiles: const [
-      StaggeredTile.count(2, 1),
-      StaggeredTile.count(1, 2),
-      StaggeredTile.count(1, 2),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(2, 1),
+      // StaggeredTile.count(2, 1),
+      // StaggeredTile.count(1, 2),
+      // StaggeredTile.count(1, 2),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(2, 1),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
@@ -172,20 +172,20 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 3, crossAxisSpacing: 4),
     College(tiles: const [
-      StaggeredTile.count(2, 3),
-      StaggeredTile.count(2, 3),
+      // StaggeredTile.count(2, 3),
+      // StaggeredTile.count(2, 3),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
     College(tiles: const [
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(2, 3),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(2, 3),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
@@ -196,17 +196,17 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
     College(tiles: const [
-      StaggeredTile.count(4, 2),
-      StaggeredTile.count(4, 2),
+      // StaggeredTile.count(4, 2),
+      // StaggeredTile.count(4, 2),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
     College(tiles: const [
-      StaggeredTile.count(2, 3),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
+      // StaggeredTile.count(2, 3),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
@@ -214,11 +214,11 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 3, crossAxisSpacing: 4),
     College(tiles: const [
-      StaggeredTile.count(2, 2),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
+      // StaggeredTile.count(2, 2),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
@@ -227,12 +227,12 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
     College(tiles: const [
-      StaggeredTile.count(2, 2),
-      StaggeredTile.count(2, 2),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
+      // StaggeredTile.count(2, 2),
+      // StaggeredTile.count(2, 2),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
@@ -242,11 +242,11 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
     College(tiles: const [
-      StaggeredTile.count(4, 2),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
+      // StaggeredTile.count(4, 2),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
@@ -255,27 +255,12 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 4, crossAxisSpacing: 4),
     College(tiles: const [
-      StaggeredTile.count(2, 2),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-    ], children: [
-      buildPhotoContainer(),
-      buildPhotoContainer(),
-      buildPhotoContainer(),
-      buildPhotoContainer(),
-      buildPhotoContainer(),
-      buildPhotoContainer(),
-    ], mainAxisSpacing: 4, crossAxisCount: 3, crossAxisSpacing: 4),
-    College(tiles: const [
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(2, 2),
-      StaggeredTile.count(1, 1),
+      // StaggeredTile.count(2, 2),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
@@ -285,16 +270,31 @@ class _CollageScreenState extends State<CollageScreen> {
       buildPhotoContainer(),
     ], mainAxisSpacing: 4, crossAxisCount: 3, crossAxisSpacing: 4),
     College(tiles: const [
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(3, 2),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
-      StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(2, 2),
+      // StaggeredTile.count(1, 1),
+    ], children: [
+      buildPhotoContainer(),
+      buildPhotoContainer(),
+      buildPhotoContainer(),
+      buildPhotoContainer(),
+      buildPhotoContainer(),
+      buildPhotoContainer(),
+    ], mainAxisSpacing: 4, crossAxisCount: 3, crossAxisSpacing: 4),
+    College(tiles: const [
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(3, 2),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
+      // StaggeredTile.count(1, 1),
     ], children: [
       buildPhotoContainer(),
       buildPhotoContainer(),
@@ -355,7 +355,7 @@ buildPhotoContainer() {
 }
 
 class College {
-  List<StaggeredTile> tiles = [];
+  List<Widget> tiles = [];
   List<Widget> children = [];
   double mainAxisSpacing;
   double crossAxisSpacing;
@@ -466,13 +466,14 @@ class _PhotoCollegeViewState extends State<PhotoCollegeView> {
                 child: Card(
                   child: Container(
                     margin: const EdgeInsets.all(10),
-                    child: StaggeredGridView.count(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
+                    child: StaggeredGrid.count(
+                      // shrinkWrap: true,
+                      // physics: const NeverScrollableScrollPhysics(),
                       crossAxisCount: widget.college.crossAxisCount,
                       mainAxisSpacing: widget.college.mainAxisSpacing,
                       crossAxisSpacing: widget.college.crossAxisSpacing,
-                      staggeredTiles: widget.college.tiles,
+
+                      // StaggeredGrid: widget.college.tiles,
                       children: widget.images
                           .map((e) => buildPhotoContainer(e))
                           .toList(),
@@ -481,16 +482,14 @@ class _PhotoCollegeViewState extends State<PhotoCollegeView> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             MaterialButton(
               shape: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white)),
               onPressed: onSave,
               child: Text(
                 "Save".tr,
-                style: TextStyle(fontSize: 16, color: Colors.white),
+                style: const TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
           ]),

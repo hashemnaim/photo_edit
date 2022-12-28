@@ -2,18 +2,21 @@ import 'package:editor/widgets/sliderWidget.dart';
 import 'package:editor/widgets/textStyle.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
-
-
 import '../utils/app_colors.dart';
 import '../views/Editor/bottomBarContainer.dart';
 import '../views/Editor/image_editor_pro.dart';
 
-openRotationWidget({required Function onBack,required Widget title,required Function onIncrement,required Function onDecrement,required Function onSliderChange}) {
+openRotationWidget(
+    {required Function onBack,
+    required Widget title,
+    required Function onIncrement,
+    required Function onDecrement,
+    required Function onSliderChange}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Container(
-        padding:const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -74,10 +77,9 @@ openRotationWidget({required Function onBack,required Widget title,required Func
             ),
           ),
           Expanded(
-              child: sliderWidget(0.0, 6.5, 100, imageAngle,
-                      (double newValue) {
-                    onSliderChange(newValue);
-                  })),
+              child: sliderWidget(0.0, 6.5, 100, imageAngle, (double newValue) {
+            onSliderChange(newValue);
+          })),
         ],
       ),
     ],

@@ -93,7 +93,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
                       flex: 3,
                       child: Center(
                         child: Text(
-                          'Theme',
+                          'Theme'.tr,
                           style: myTextStyle(18, FontWeight.w600, kWhiteColor),
                         ),
                       ),
@@ -105,7 +105,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
                   height: 20,
                 ),
                 Text(
-                  'Light Colors',
+                  'Light Colors'.tr,
                   style: myTextStyle(18, FontWeight.w600, kWhiteColor),
                 ),
                 const SizedBox(
@@ -147,7 +147,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
                   height: 20,
                 ),
                 Text(
-                  'Dark Colors',
+                  'Dark Colors'.tr,
                   style: myTextStyle(18, FontWeight.w600, kWhiteColor),
                 ),
                 const SizedBox(
@@ -189,7 +189,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
                   height: 20,
                 ),
                 Text(
-                  'Wallpapers',
+                  'Wallpapers'.tr,
                   style: myTextStyle(18, FontWeight.w600, kWhiteColor),
                 ),
                 const SizedBox(

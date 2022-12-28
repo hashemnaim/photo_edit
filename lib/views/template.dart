@@ -3,7 +3,6 @@ import 'package:editor/models/sticker_model.dart';
 import 'package:editor/views/Editor/image_editor_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../utils/app_colors.dart';
 import '../utils/theme.dart';
 import '../widgets/textStyle.dart';

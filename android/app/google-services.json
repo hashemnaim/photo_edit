@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "742042957955",
-    "project_id": "mosamim-ar",
-    "storage_bucket": "mosamim-ar.appspot.com"
+    "project_number": "800105265786",
+    "project_id": "mosammem",
+    "storage_bucket": "mosammem.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:742042957955:android:a8fbe0c052de124b6b03b6",
+        "mobilesdk_app_id": "1:800105265786:android:8071e1259e240d4a9cd9c3",
         "android_client_info": {
-          "package_name": "com.designer.almosamem"
+          "package_name": "com.hashem.editphoto"
         }
       },
       "oauth_client": [
         {
-          "client_id": "742042957955-05ua7qotnqrdmttg4qtu3ko5blngipnu.apps.googleusercontent.com",
+          "client_id": "800105265786-15prh5dj5bsf7ot06jrbj3e0e8fnqoaa.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC25NMhd_zqon9gCAam8aWNDrB86nrpUs4"
+          "current_key": "AIzaSyASDfN2zrfFefOe1aC0cwYtl8osGPliIa8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "742042957955-05ua7qotnqrdmttg4qtu3ko5blngipnu.apps.googleusercontent.com",
+              "client_id": "800105265786-15prh5dj5bsf7ot06jrbj3e0e8fnqoaa.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

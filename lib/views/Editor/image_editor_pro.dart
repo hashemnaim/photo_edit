@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
 import 'package:editor/views/Editor/block_picker.dart' as block;
+import '../../widgets/custom_button.dart';
 import 'bottomBarContainer.dart' as b;
 import 'emojies_view.dart' as e;
 
@@ -240,154 +241,33 @@ class _ImageEditorProState extends State<ImageEditorPro> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.grey.shade400,
-        body: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              height: AppBar().preferredSize.height,
-              decoration: isColors
-                  ? BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: isDark
-                              ? darkColors[selectedElement]
-                              : lightColors[selectedElement],
-                          end: Alignment.bottomRight,
-                          begin: Alignment.topLeft))
-                  : BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(
-                              imageThemes[selectedElement].smallImage),
-                          fit: BoxFit.fill)),
-              child: Row(children: [
-                Expanded(
-                  child: IconButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    icon: Icon(Icons.arrow_back_ios, color: kWhiteColor),
-                  ),
-                ),
-                Expanded(
-                  flex: 5,
-                  child: Center(
-                    child: Text(
-                      '',
-                      style: myTextStyle(18, FontWeight.w600, kWhiteColor),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    for (var e in widgetJson) {
-                      e.isEdit = false;
-                    }
-                    openTextField = false;
-                    setState(() {});
-                    screenshotController.capture().then((binaryIntList) async {
-                      final paths = widget.pathSave ??
-                          await getApplicationDocumentsDirectory();
-
-                      final file = await File('${paths.path}/' +
-                              DateTime.now().toString() +
-                              '.jpg')
-                          .create();
-
-                      file.writeAsBytes(binaryIntList!).then((value) {
-                        Share.shareFiles([value.path]);
-                      });
-                    }).catchError((onError) {
-                      if (kDebugMode) {
-                        print(onError);
-                      }
-                    });
-                  },
-                  child: Container(
-                    // width: 20,
-                    // height: 20,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                    child: Image.asset(
-                      'images/newIcons/share (6).png',
-                      width: 22,
-                      height: 22,
-                      color: kWhiteColor,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                InkWell(
-                  onTap: () {
-                    AdmobService.interstitialAd!.show().then((value) {
-                      AdmobService.initilizeInterstitial();
-                    });
-                    for (var e in widgetJson) {
-                      e.isEdit = false;
-                    }
-
-                    for (var element in imageList) {
-                      element.isEdit = false;
-                    }
-                    openTextField = false;
-                    setState(() {});
-
-                    screenshotController.capture().then((binaryIntList) async {
-                      final paths = widget.pathSave ??
-                          await getApplicationDocumentsDirectory();
-
-                      if (kDebugMode) {
-                        print("Path is ${paths.path}");
-                      }
-
-                      final file = await File('${paths.path}/' +
-                              DateTime.now().toString() +
-                              '.jpg')
-                          .create();
-
-                      if (kDebugMode) {
-                        print(file);
-                      }
-
-                      file.writeAsBytesSync(binaryIntList!);
-                      GallerySaver.saveImage(file.path).then((success) async {
-                        if (widget.galleryImage != null) {
-                          widget.galleryImage!.delete();
-                        }
-
-                        Get.snackbar('Success', 'Image Saved',
-                            snackPosition: SnackPosition.TOP,
-                            backgroundColor: kPrimaryColor,
-                            colorText: kWhiteColor);
-                      });
-                    }).catchError((onError) {
-                      if (kDebugMode) {
-                        print(onError);
-                      }
-                    });
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(5),
-                    child: Image.asset(
-                      'images/newIcons/download (4) (1).png',
-                      width: 22,
-                      height: 22,
-                      color: kWhiteColor,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-              ]),
-            ),
-            Expanded(
-              child: Container(
+    return WillPopScope(
+      onWillPop: () async {
+        return await Get.dialog(
+          AlertDialog(
+            title: Text('Are you sure?'.tr),
+            content: Text('The design will be deleted'.tr),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Get.back(result: false),
+                child: Text('No'.tr),
+              ),
+              TextButton(
+                onPressed: () => Get.back(result: true),
+                child: Text('Yes'.tr),
+              ),
+            ],
+          ),
+        );
+      },
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.grey.shade400,
+          body: Column(
+            children: [
+              Container(
                 width: double.infinity,
-                height: double.infinity,
+                height: AppBar().preferredSize.height,
                 decoration: isColors
                     ? BoxDecoration(
                         gradient: LinearGradient(
@@ -401,389 +281,560 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                             image: AssetImage(
                                 imageThemes[selectedElement].smallImage),
                             fit: BoxFit.fill)),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          if (kDebugMode) {
-                            print('isEdit clicked');
-                          }
-                          setState(() {
-                            for (var e in widgetJson) {
-                              e.isEdit = false;
-                            }
+                child: Row(children: [
+                  Expanded(
+                    child: IconButton(
+                      onPressed: () async {
+                        return await Get.dialog(AlertDialog(
+                          title: Text('Are you sure?'.tr),
+                          content: Text('The design will be deleted'.tr),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () => Get.back(result: false),
+                              child: Text('No'.tr),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Get.back();
+                                Get.back();
+                              },
+                              child: Text('Yes'.tr),
+                            ),
+                          ],
+                        ));
+                      },
+                      icon: Icon(Icons.arrow_back_ios, color: kWhiteColor),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 5,
+                    child: Center(
+                      child: Text(
+                        '',
+                        style: myTextStyle(18, FontWeight.w600, kWhiteColor),
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      for (var e in widgetJson) {
+                        e.isEdit = false;
+                      }
+                      openTextField = false;
+                      setState(() {});
+                      screenshotController
+                          .capture()
+                          .then((binaryIntList) async {
+                        final paths = widget.pathSave ??
+                            await getApplicationDocumentsDirectory();
 
-                            for (var element in imageList) {
-                              element.isEdit = false;
+                        final file = await File('${paths.path}/' +
+                                DateTime.now().toString() +
+                                '.jpg')
+                            .create();
+
+                        file.writeAsBytes(binaryIntList!).then((value) {
+                          Share.shareFiles([value.path]);
+                        });
+                      }).catchError((onError) {
+                        if (kDebugMode) {
+                          print(onError);
+                        }
+                      });
+                    },
+                    child: Container(
+                      // width: 20,
+                      // height: 20,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 5),
+                      child: Image.asset(
+                        'images/newIcons/share (6).png',
+                        width: 22,
+                        height: 22,
+                        color: kWhiteColor,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      AdmobService.interstitialAd!.show().then((value) {
+                        AdmobService.initilizeInterstitial();
+                      });
+                      for (var e in widgetJson) {
+                        e.isEdit = false;
+                      }
+
+                      for (var element in imageList) {
+                        element.isEdit = false;
+                      }
+                      openTextField = false;
+                      setState(() {});
+
+                      screenshotController
+                          .capture()
+                          .then((binaryIntList) async {
+                        final paths = widget.pathSave ??
+                            await getApplicationDocumentsDirectory();
+
+                        if (kDebugMode) {
+                          print("Path is ${paths.path}");
+                        }
+
+                        final file = await File('${paths.path}/' +
+                                DateTime.now().toString() +
+                                '.jpg')
+                            .create();
+
+                        if (kDebugMode) {
+                          print(file);
+                        }
+
+                        file.writeAsBytesSync(binaryIntList!);
+                        GallerySaver.saveImage(file.path).then((success) async {
+                          if (widget.galleryImage != null) {
+                            widget.galleryImage!.delete();
+                          }
+
+                          Get.snackbar('Success'.tr, 'Image Saved'.tr,
+                              snackPosition: SnackPosition.TOP,
+                              backgroundColor: kPrimaryColor,
+                              colorText: kWhiteColor);
+                        });
+                      }).catchError((onError) {
+                        if (kDebugMode) {
+                          print(onError);
+                        }
+                      });
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(5),
+                      child: Image.asset(
+                        'images/newIcons/download (4) (1).png',
+                        width: 22,
+                        height: 22,
+                        color: kWhiteColor,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                ]),
+              ),
+              Expanded(
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  decoration: isColors
+                      ? BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: isDark
+                                  ? darkColors[selectedElement]
+                                  : lightColors[selectedElement],
+                              end: Alignment.bottomRight,
+                              begin: Alignment.topLeft))
+                      : BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(
+                                  imageThemes[selectedElement].smallImage),
+                              fit: BoxFit.fill)),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            if (kDebugMode) {
+                              print('isEdit clicked');
                             }
-                          });
-                        },
-                        child: Center(
-                          child: Screenshot(
-                            controller: screenshotController,
-                            child: RotatedBox(
-                              quarterTurns: rotateValue,
-                              child: SizedBox(
-                                width: double.infinity,
-                                height: 500,
-                                child: RepaintBoundary(
-                                  key: globalKey,
-                                  child: Stack(
-                                    children: [
-                                      Stack(
-                                        children: [
-                                          _image != null ||
-                                                  widget.backgroundImagePath !=
-                                                      null ||
-                                                  widget.stickerNetworkImage !=
-                                                      null
-                                              ? Transform(
-                                                  alignment: Alignment.center,
-                                                  transform: Matrix4.rotationY(
-                                                      flipValue),
-                                                  child: Stack(
-                                                    children: [
-                                                      isLoading
-                                                          ? const Center(
-                                                              child:
-                                                                  CircularProgressIndicator(),
-                                                            )
-                                                          : SizedBox(
-                                                              width: double
-                                                                  .infinity,
-                                                              child:
-                                                                  ColorFiltered(
-                                                                colorFilter:
-                                                                    ColorFilter.matrix(
-                                                                        filters[
-                                                                            currentFilter]),
-                                                                child: Transform
-                                                                    .rotate(
-                                                                  angle:
-                                                                      imageAngle,
-                                                                  child:
-                                                                      Container(
-                                                                    height:
-                                                                        Get.height *
-                                                                            0.62,
-                                                                    width: 400,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      border: Border.all(
-                                                                          width:
-                                                                              imageBorderWidth,
-                                                                          color: imageBorderWidth < 1
-                                                                              ? Colors.transparent
-                                                                              : imageBorderColor),
-                                                                      image:
-                                                                          DecorationImage(
-                                                                        alignment:
-                                                                            Alignment.center,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                        image: FileImage(
-                                                                            _image!),
+                            setState(() {
+                              for (var e in widgetJson) {
+                                e.isEdit = false;
+                              }
+
+                              for (var element in imageList) {
+                                element.isEdit = false;
+                              }
+                            });
+                          },
+                          child: Center(
+                            child: Screenshot(
+                              controller: screenshotController,
+                              child: RotatedBox(
+                                quarterTurns: rotateValue,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: 500,
+                                  child: RepaintBoundary(
+                                    key: globalKey,
+                                    child: Stack(
+                                      children: [
+                                        Stack(
+                                          children: [
+                                            _image != null ||
+                                                    widget.backgroundImagePath !=
+                                                        null ||
+                                                    widget.stickerNetworkImage !=
+                                                        null
+                                                ? Transform(
+                                                    alignment: Alignment.center,
+                                                    transform:
+                                                        Matrix4.rotationY(
+                                                            flipValue),
+                                                    child: Stack(
+                                                      children: [
+                                                        isLoading
+                                                            ? const Center(
+                                                                child:
+                                                                    CircularProgressIndicator(),
+                                                              )
+                                                            : SizedBox(
+                                                                width: double
+                                                                    .infinity,
+                                                                child:
+                                                                    ColorFiltered(
+                                                                  colorFilter:
+                                                                      ColorFilter
+                                                                          .matrix(
+                                                                              filters[currentFilter]),
+                                                                  child: Transform
+                                                                      .rotate(
+                                                                    angle:
+                                                                        imageAngle,
+                                                                    child:
+                                                                        Container(
+                                                                      height: Get
+                                                                              .height *
+                                                                          0.62,
+                                                                      width:
+                                                                          400,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        border: Border.all(
+                                                                            width:
+                                                                                imageBorderWidth,
+                                                                            color: imageBorderWidth < 1
+                                                                                ? Colors.transparent
+                                                                                : imageBorderColor),
+                                                                        image:
+                                                                            DecorationImage(
+                                                                          alignment:
+                                                                              Alignment.center,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                          image:
+                                                                              FileImage(_image!),
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                      SizedBox(
-                                                          width:
-                                                              double.infinity,
-                                                          child: BackdropFilter(
-                                                            filter: ImageFilter
-                                                                .blur(
-                                                              sigmaX: blurValue,
-                                                              sigmaY: blurValue,
-                                                            ),
-                                                            child: Container(
-                                                              color: colorValue
-                                                                  .withOpacity(
-                                                                      opacityValue),
-                                                            ),
-                                                          )),
-                                                      currentFrame == null
-                                                          ? Container()
-                                                          : Container(
-                                                              height:
-                                                                  Get.height *
-                                                                      0.65,
-                                                              width: Get.width,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                // color: Colors.red.withOpacity(0.3),
-                                                                image: DecorationImage(
-                                                                    alignment:
-                                                                        Alignment
-                                                                            .center,
-                                                                    fit: BoxFit
-                                                                        .fill,
-                                                                    image: NetworkImage(
-                                                                        currentFrame!)),
+                                                        SizedBox(
+                                                            width:
+                                                                double.infinity,
+                                                            child:
+                                                                BackdropFilter(
+                                                              filter:
+                                                                  ImageFilter
+                                                                      .blur(
+                                                                sigmaX:
+                                                                    blurValue,
+                                                                sigmaY:
+                                                                    blurValue,
+                                                              ),
+                                                              child: Container(
+                                                                color: colorValue
+                                                                    .withOpacity(
+                                                                        opacityValue),
+                                                              ),
+                                                            )),
+                                                        currentFrame == null
+                                                            ? Container()
+                                                            : Container(
+                                                                height:
+                                                                    Get.height *
+                                                                        0.65,
+                                                                width:
+                                                                    Get.width,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  // color: Colors.red.withOpacity(0.3),
+                                                                  image: DecorationImage(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .center,
+                                                                      fit: BoxFit
+                                                                          .fill,
+                                                                      image: NetworkImage(
+                                                                          currentFrame!)),
+                                                                ),
+                                                              ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                : Container(),
+                                          ],
+                                        ),
+                                        ...widgetJson.asMap().entries.map(
+                                          (f) {
+                                            return widgetJson[f.key].type == 1
+                                                ?
+
+                                                ///Uncomment bellow Code from here
+                                                e.EmojiView(
+                                                    onDelete: (index) {
+                                                      widgetJson
+                                                          .removeAt(index);
+                                                      setState(() {});
+                                                    },
+                                                    left: offsets[f.key].dx,
+                                                    top: offsets[f.key].dy,
+                                                    onPanUpdate: (details) {
+                                                      setState(() {
+                                                        offsets[f.key] = Offset(
+                                                            offsets[f.key].dx +
+                                                                details
+                                                                    .delta.dx,
+                                                            offsets[f.key].dy +
+                                                                details
+                                                                    .delta.dy);
+                                                      });
+                                                    },
+                                                    mapJson: f.value,
+                                                    index: f.key,
+                                                  )
+
+                                                /// till here
+                                                : widgetJson[f.key].type == 2
+                                                    ? TextView(
+                                                        f.value.width,
+                                                        f.value.myFontModel
+                                                            ?.isUseCurved,
+                                                        left: offsets[f.key].dx,
+                                                        top: offsets[f.key].dy,
+                                                        onEdit: () {
+                                                          isEdit = true;
+                                                          name.text =
+                                                              widgetJson[f.key]
+                                                                  .name!;
+                                                          openTextField = true;
+                                                          setState(() {});
+                                                        },
+                                                        onPanUpdate: (details) {
+                                                          setState(() {
+                                                            offsets[
+                                                                f
+                                                                    .key] = Offset(
+                                                                offsets[f.key]
+                                                                        .dx +
+                                                                    details
+                                                                        .delta
+                                                                        .dx,
+                                                                offsets[f.key]
+                                                                        .dy +
+                                                                    details
+                                                                        .delta
+                                                                        .dy);
+                                                          });
+                                                        },
+                                                        mapJson: f.value,
+                                                        textStyle:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.textStyle,
+                                                        myShadow:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.textShadow,
+                                                        fontSize:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.textFontSize,
+                                                        currentColor:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.textColor,
+                                                        borderRadius: widgetJson[
+                                                                f.key]
+                                                            .myFontModel
+                                                            ?.textBorderRadius,
+                                                        backgroundColor:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.textBackgroundColor,
+                                                        paddingWidth:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.textFontWidth,
+                                                        paddingHeight:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.textFontHeight,
+                                                        myAlignment:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.myAlignment,
+                                                        backgroundBorderColor:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.backgroundBorderColor,
+                                                        backgroundBorderSize:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.textBackgroundBorderSize,
+                                                        backgroundOpacity:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.textBackgroundOpacity,
+                                                        borderOpacity: widgetJson[
+                                                                f.key]
+                                                            .myFontModel
+                                                            ?.textBorderOpacity,
+                                                        textOpacity:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.textOpacity,
+                                                        curveRadius:
+                                                            curveRadius,
+                                                        curveAngle: curveAngle,
+                                                        fontWeight:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.fontWeight,
+                                                        textDecoration:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.textDecoration,
+                                                        fontStyle:
+                                                            widgetJson[f.key]
+                                                                .myFontModel
+                                                                ?.fontStyle,
+                                                      )
+                                                    : widgetJson[f.key].type ==
+                                                            3
+                                                        ? Positioned(
+                                                            left: offsets[f.key]
+                                                                .dx,
+                                                            top: offsets[f.key]
+                                                                .dy,
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                for (var e
+                                                                    in widgetJson) {
+                                                                  e.isEdit =
+                                                                      false;
+                                                                }
+                                                                setState(() {
+                                                                  f.value.isEdit =
+                                                                      true;
+                                                                });
+                                                              },
+                                                              onPanUpdate:
+                                                                  (details) {
+                                                                setState(() {
+                                                                  offsets[f.key] = Offset(
+                                                                      offsets[f.key]
+                                                                              .dx +
+                                                                          details
+                                                                              .delta
+                                                                              .dx,
+                                                                      offsets[f.key]
+                                                                              .dy +
+                                                                          details
+                                                                              .delta
+                                                                              .dy);
+                                                                });
+                                                              },
+                                                              child: Column(
+                                                                children: [
+                                                                  isSticker
+                                                                      ? buildStickerWidget(
+                                                                          f)
+                                                                      : Container(),
+                                                                ],
                                                               ),
                                                             ),
-                                                    ],
-                                                  ),
-                                                )
-                                              : Container(),
-                                        ],
-                                      ),
-                                      ...widgetJson.asMap().entries.map(
-                                        (f) {
-                                          return widgetJson[f.key].type == 1
-                                              ?
-
-                                              ///Uncomment bellow Code from here
-                                              e.EmojiView(
-                                                  onDelete: (index) {
-                                                    widgetJson.removeAt(index);
-                                                    setState(() {});
-                                                  },
-                                                  left: offsets[f.key].dx,
-                                                  top: offsets[f.key].dy,
-                                                  onPanUpdate: (details) {
-                                                    setState(() {
-                                                      offsets[f.key] = Offset(
-                                                          offsets[f.key].dx +
-                                                              details.delta.dx,
-                                                          offsets[f.key].dy +
-                                                              details.delta.dy);
-                                                    });
-                                                  },
-                                                  mapJson: f.value,
-                                                  index: f.key,
-                                                )
-
-                                              /// till here
-                                              : widgetJson[f.key].type == 2
-                                                  ? TextView(
-                                                      f.value.width,
-                                                      f.value.myFontModel
-                                                          ?.isUseCurved,
-                                                      left: offsets[f.key].dx,
-                                                      top: offsets[f.key].dy,
-                                                      onEdit: () {
-                                                        isEdit = true;
-                                                        name.text =
-                                                            widgetJson[f.key]
-                                                                .name!;
-                                                        openTextField = true;
-                                                        setState(() {});
-                                                      },
-                                                      onPanUpdate: (details) {
-                                                        setState(() {
-                                                          offsets[f.key] =
-                                                              Offset(
-                                                                  offsets[f.key]
-                                                                          .dx +
-                                                                      details
-                                                                          .delta
-                                                                          .dx,
-                                                                  offsets[f.key]
-                                                                          .dy +
-                                                                      details
-                                                                          .delta
-                                                                          .dy);
-                                                        });
-                                                      },
-                                                      mapJson: f.value,
-                                                      textStyle:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.textStyle,
-                                                      myShadow:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.textShadow,
-                                                      fontSize:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.textFontSize,
-                                                      currentColor:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.textColor,
-                                                      borderRadius: widgetJson[
-                                                              f.key]
-                                                          .myFontModel
-                                                          ?.textBorderRadius,
-                                                      backgroundColor: widgetJson[
-                                                              f.key]
-                                                          .myFontModel
-                                                          ?.textBackgroundColor,
-                                                      paddingWidth:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.textFontWidth,
-                                                      paddingHeight:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.textFontHeight,
-                                                      myAlignment:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.myAlignment,
-                                                      backgroundBorderColor:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.backgroundBorderColor,
-                                                      backgroundBorderSize:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.textBackgroundBorderSize,
-                                                      backgroundOpacity:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.textBackgroundOpacity,
-                                                      borderOpacity: widgetJson[
-                                                              f.key]
-                                                          .myFontModel
-                                                          ?.textBorderOpacity,
-                                                      textOpacity:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.textOpacity,
-                                                      curveRadius: curveRadius,
-                                                      curveAngle: curveAngle,
-                                                      fontWeight:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.fontWeight,
-                                                      textDecoration:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.textDecoration,
-                                                      fontStyle:
-                                                          widgetJson[f.key]
-                                                              .myFontModel
-                                                              ?.fontStyle,
-                                                    )
-                                                  : widgetJson[f.key].type == 3
-                                                      ? Positioned(
-                                                          left:
-                                                              offsets[f.key].dx,
-                                                          top:
-                                                              offsets[f.key].dy,
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () {
-                                                              for (var e
-                                                                  in widgetJson) {
-                                                                e.isEdit =
-                                                                    false;
-                                                              }
-                                                              setState(() {
-                                                                f.value.isEdit =
-                                                                    true;
-                                                              });
-                                                            },
-                                                            onPanUpdate:
-                                                                (details) {
-                                                              setState(() {
-                                                                offsets[
-                                                                    f
-                                                                        .key] = Offset(
-                                                                    offsets[f.key]
-                                                                            .dx +
-                                                                        details
-                                                                            .delta
-                                                                            .dx,
-                                                                    offsets[f.key]
-                                                                            .dy +
-                                                                        details
-                                                                            .delta
-                                                                            .dy);
-                                                              });
-                                                            },
-                                                            child: Column(
-                                                              children: [
-                                                                isSticker
-                                                                    ? buildStickerWidget(
-                                                                        f)
-                                                                    : Container(),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        )
-                                                      : Container();
-                                        },
-                                      ).toList(),
-                                      ...imageList.asMap().entries.map((f) {
-                                        return imageElement(f.key);
-                                      }).toList(),
-                                      showTextWidgetForTyping(),
-                                    ],
+                                                          )
+                                                        : Container();
+                                          },
+                                        ).toList(),
+                                        ...imageList.asMap().entries.map((f) {
+                                          return imageElement(f.key);
+                                        }).toList(),
+                                        showTextWidgetForTyping(),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
                         ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          bottomNavigationBar: openBottomSheet
+              ? Container()
+              : Container(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  decoration: isColors
+                      ? BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: isDark
+                                  ? darkColors[selectedElement]
+                                  : lightColors[selectedElement],
+                              end: Alignment.bottomRight,
+                              begin: Alignment.topLeft))
+                      : BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(
+                                  imageThemes[selectedElement].smallImage),
+                              fit: BoxFit.fill)),
+                  height: Get.height * 0.28,
+                  width: Get.width,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: openFonts
+                            ? showOpenFontsWidget()
+                            : openFontFamily
+                                ? showOpenFontFamilyWidget()
+                                : openShadow
+                                    ? showOpenShadowWidget()
+                                    : openResize
+                                        ? showOpenResizeWidget()
+                                        : openTextColor
+                                            ? showOpenTextColorWidget()
+                                            : openBackgroundColor
+                                                ? showBackgroundColorWidget()
+                                                : openTextFormat
+                                                    ? showOpenTextFormatWidget()
+                                                    : openTextOpacity
+                                                        ? showOpenTextOpacityWidget()
+                                                        : openCurveText
+                                                            ? showOpenCurveTextWidget()
+                                                            : openRotation
+                                                                ? showOpenRotationWidget()
+                                                                : openFrames
+                                                                    ? showFramesWidget()
+                                                                    : openStickers
+                                                                        ? showStickersWidget()
+                                                                        : openFilter
+                                                                            ? showOpenFilterWidget()
+                                                                            : openMainMenuWidget(context),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ),
-          ],
         ),
-        bottomNavigationBar: openBottomSheet
-            ? Container()
-            : Container(
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                decoration: isColors
-                    ? BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: isDark
-                                ? darkColors[selectedElement]
-                                : lightColors[selectedElement],
-                            end: Alignment.bottomRight,
-                            begin: Alignment.topLeft))
-                    : BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                                imageThemes[selectedElement].smallImage),
-                            fit: BoxFit.fill)),
-                height: Get.height * 0.28,
-                width: Get.width,
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: openFonts
-                          ? showOpenFontsWidget()
-                          : openFontFamily
-                              ? showOpenFontFamilyWidget()
-                              : openShadow
-                                  ? showOpenShadowWidget()
-                                  : openResize
-                                      ? showOpenResizeWidget()
-                                      : openTextColor
-                                          ? showOpenTextColorWidget()
-                                          : openBackgroundColor
-                                              ? showBackgroundColorWidget()
-                                              : openTextFormat
-                                                  ? showOpenTextFormatWidget()
-                                                  : openTextOpacity
-                                                      ? showOpenTextOpacityWidget()
-                                                      : openCurveText
-                                                          ? showOpenCurveTextWidget()
-                                                          : openRotation
-                                                              ? showOpenRotationWidget()
-                                                              : openFrames
-                                                                  ? showFramesWidget()
-                                                                  : openStickers
-                                                                      ? showStickersWidget()
-                                                                      : openFilter
-                                                                          ? showOpenFilterWidget()
-                                                                          : openMainMenuWidget(
-                                                                              context),
-                    ),
-                  ],
-                ),
-              ),
       ),
     );
   }
@@ -1042,7 +1093,6 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                       indicatorColor: Colors.blue,
                       iconColor: Colors.grey,
                       iconColorSelected: Colors.blue,
-                      progressIndicatorColor: Colors.blue,
                       backspaceColor: Colors.blue,
                       skinToneDialogBgColor: Colors.white,
                       skinToneIndicatorColor: Colors.grey,

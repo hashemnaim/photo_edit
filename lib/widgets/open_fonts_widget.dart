@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'dart:math' as math;
 
 import '../models/text_model.dart';
 import '../views/Editor/bottomBarContainer.dart' as b;
 import '../views/Editor/image_editor_pro.dart';
 
-openFontsWidget({Function? onBack,Widget? title,Function? onFonts,Function? onTextColor,Function? onBgs,
-Function? onShadow,Function? onResize, Function? onCurveText,Function? onFormat,Function? onOpacity,Function? onUpdate}) {
+openFontsWidget(
+    {Function? onBack,
+    Widget? title,
+    Function? onFonts,
+    Function? onTextColor,
+    Function? onBgs,
+    Function? onShadow,
+    Function? onResize,
+    Function? onCurveText,
+    Function? onFormat,
+    Function? onOpacity,
+    Function? onUpdate}) {
   return SingleChildScrollView(
     child: Column(
       children: [
@@ -28,40 +39,37 @@ Function? onShadow,Function? onResize, Function? onCurveText,Function? onFormat,
                   )),
             ),
             title!,
-            Container(
-              width: 30,
-            ),
+            Container(width: 30),
           ],
         ),
         const SizedBox(height: 11),
-
         Row(
           children: [
             b.BottomBarContainer(
               imageIcon: 'images/newIcons/font (1) 1.png',
-              title: 'Fonts',
+              title: 'Fonts'.tr,
               onTap: () {
                 onFonts!();
               },
             ),
             b.BottomBarContainer(
               imageIcon: 'images/newIcons/colour (1) 1.png',
-              title: 'Text Color',
+              title: 'Text Color'.tr,
               onTap: () {
                 onTextColor!();
               },
             ),
             b.BottomBarContainer(
               imageIcon: 'images/newIcons/background (3) 1.png',
-              title: 'Background',
+              title: 'Background'.tr,
               onTap: () {
                 onBgs!();
               },
             ),
             b.BottomBarContainer(
               imageIcon:
-              'images/newIcons/circle-and-cube-with-shadow (3) 1.png',
-              title: 'Shadow',
+                  'images/newIcons/circle-and-cube-with-shadow (3) 1.png',
+              title: 'Shadow'.tr,
               onTap: () {
                 onShadow!();
               },
@@ -73,7 +81,7 @@ Function? onShadow,Function? onResize, Function? onCurveText,Function? onFormat,
           children: [
             b.BottomBarContainer(
               imageIcon: 'images/newIcons/maximize (1) 1.png',
-              title: 'Resize',
+              title: 'Resize'.tr,
               onTap: () {
                 onResize!();
               },
@@ -81,7 +89,7 @@ Function? onShadow,Function? onResize, Function? onCurveText,Function? onFormat,
 
             b.BottomBarContainer(
               imageIcon: 'images/newIcons/corner (1) 1.png',
-              title: 'Curve Text',
+              title: 'Curve Text'.tr,
               onTap: () {
                 onCurveText!();
               },
@@ -91,14 +99,14 @@ Function? onShadow,Function? onResize, Function? onCurveText,Function? onFormat,
 
             b.BottomBarContainer(
               imageIcon: 'images/newIcons/center-align (3) 1.png',
-              title: 'Format',
+              title: 'Format'.tr,
               onTap: () {
                 onFormat!();
               },
             ),
             b.BottomBarContainer(
               imageIcon: 'images/newIcons/coloring-tool 1.png',
-              title: 'Opacity',
+              title: 'Opacity'.tr,
               onTap: () {
                 onOpacity!();
               },
@@ -110,20 +118,17 @@ Function? onShadow,Function? onResize, Function? onCurveText,Function? onFormat,
           children: [
             b.BottomBarContainer(
               imageIcon: 'images/newIcons/bold-text 1.png',
-              title: 'Bold',
+              title: 'Bold'.tr,
               onTap: () {
                 TextModel selectedText =
-                widgetJson.firstWhere((element) => element.isEdit!);
+                    widgetJson.firstWhere((element) => element.isEdit!);
 
                 int index = widgetJson.indexOf(selectedText);
 
-                if (selectedText.myFontModel!.fontWeight ==
-                    FontWeight.normal) {
-                  widgetJson[index].myFontModel!.fontWeight =
-                      FontWeight.bold;
+                if (selectedText.myFontModel!.fontWeight == FontWeight.normal) {
+                  widgetJson[index].myFontModel!.fontWeight = FontWeight.bold;
                 } else {
-                  widgetJson[index].myFontModel!.fontWeight =
-                      FontWeight.normal;
+                  widgetJson[index].myFontModel!.fontWeight = FontWeight.normal;
                 }
 
                 onUpdate!();
@@ -131,20 +136,17 @@ Function? onShadow,Function? onResize, Function? onCurveText,Function? onFormat,
             ),
             b.BottomBarContainer(
               imageIcon: 'images/newIcons/italic (1) 1.png',
-              title: 'Italic',
+              title: 'Italic'.tr,
               onTap: () {
                 TextModel selectedText =
-                widgetJson.firstWhere((element) => element.isEdit!);
+                    widgetJson.firstWhere((element) => element.isEdit!);
 
                 int index = widgetJson.indexOf(selectedText);
 
-                if (selectedText.myFontModel!.fontStyle !=
-                    FontStyle.italic) {
-                  widgetJson[index].myFontModel!.fontStyle =
-                      FontStyle.italic;
+                if (selectedText.myFontModel!.fontStyle != FontStyle.italic) {
+                  widgetJson[index].myFontModel!.fontStyle = FontStyle.italic;
                 } else {
-                  widgetJson[index].myFontModel!.fontStyle =
-                      FontStyle.normal;
+                  widgetJson[index].myFontModel!.fontStyle = FontStyle.normal;
                 }
 
                 onUpdate!();
@@ -152,10 +154,10 @@ Function? onShadow,Function? onResize, Function? onCurveText,Function? onFormat,
             ),
             b.BottomBarContainer(
               imageIcon: 'images/newIcons/italic (2) 1.png',
-              title: 'Underline',
+              title: 'Underline'.tr,
               onTap: () {
                 TextModel selectedText =
-                widgetJson.firstWhere((element) => element.isEdit!);
+                    widgetJson.firstWhere((element) => element.isEdit!);
 
                 int index = widgetJson.indexOf(selectedText);
 
@@ -169,15 +171,14 @@ Function? onShadow,Function? onResize, Function? onCurveText,Function? onFormat,
                 }
 
                 onUpdate!();
-
               },
             ),
             b.BottomBarContainer(
               imageIcon: 'images/newIcons/strikethrough 1.png',
-              title: 'Line Through',
+              title: 'Line Through'.tr,
               onTap: () {
                 TextModel selectedText =
-                widgetJson.firstWhere((element) => element.isEdit!);
+                    widgetJson.firstWhere((element) => element.isEdit!);
 
                 int index = widgetJson.indexOf(selectedText);
 

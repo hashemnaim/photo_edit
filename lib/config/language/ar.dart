@@ -28,6 +28,7 @@ Map<String, String> ar = {
   "No": "لا",
   "Are you sure?": "هل انت متأكد؟",
   "Do you want to exit an App": "هل تريد الخروج من التطبيق",
+  "The design will be deleted": "سيتم حذف التصميم",
   "Privacy Policy": "سياسة الخصوصية",
   "Photo College": "تجميع الصور",
   "Image Saved": "تم حفظ الصورة",
@@ -36,6 +37,7 @@ Map<String, String> ar = {
   "Text On Photo": "الكتابة على الصور",
   "Got it": "حسنا",
   "Languages": "اللغات",
+
   "Crop": "قص",
   "Incorrect": "غير صحيح",
   "Reset": "اعادة",
@@ -48,6 +50,12 @@ Map<String, String> ar = {
   "Sticker": "ملصق",
   "Slider Opacity": "شريط التعتيم",
   "Effects": "تأثيرات",
+  "Opacity": "الشفافية",
+  "Format": "التنسيق",
+  "Bold": "خط غامق",
+  "Italic": "مائل",
+  "Underline": "تسطير",
+  "Line Through": "عبر الخط",
   "Add Image": "اضافة صورة",
   "Add Text": "اضافة نص",
   "Birthday": "اعياد الميلاد",
@@ -55,4 +63,9 @@ Map<String, String> ar = {
   "Sport Bikes": "موتوسيكلات رياضية",
   "Birthday gift": "هدايا عيد الميلاد",
   "Pick a color!": "اختر اللون !",
+  //////////////
+  "Theme": "أنماط",
+  "Wallpapers": "ورق حائط",
+  "'Dark Colors'": "ألوان غامقة",
+  "Light Colors": "ألوان خفيفة",
 };

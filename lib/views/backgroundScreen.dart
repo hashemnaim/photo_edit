@@ -36,6 +36,7 @@ class _BackgroundScreenState extends State<BackgroundScreen> {
     return SafeArea(
       child: Scaffold(
         body: Container(
+          height: Get.height,
           padding: const EdgeInsets.only(top: 10, left: 5, bottom: 10),
           decoration: isColors
               ? BoxDecoration(

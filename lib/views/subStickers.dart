@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../models/sticker_model.dart';
 import '../utils/app_colors.dart';
 import '../utils/theme.dart';
@@ -13,8 +12,6 @@ class SubStickers extends StatefulWidget {
   String? title;
   SubStickers({Key? key, this.title}) : super(key: key);
 
-
-
   @override
   _SubStickersState createState() => _SubStickersState();
 }
@@ -25,14 +22,21 @@ class _SubStickersState extends State<SubStickers> {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          padding:const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           height: double.infinity,
-          decoration: isColors?BoxDecoration(
-              gradient: LinearGradient(colors: isDark?darkColors[selectedElement]: lightColors[selectedElement],end: Alignment.bottomRight,begin: Alignment.topLeft)
-          ) : BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(imageThemes[selectedElement].largeImage),
-                  fit: BoxFit.fill)),
+          decoration: isColors
+              ? BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: isDark
+                          ? darkColors[selectedElement]
+                          : lightColors[selectedElement],
+                      end: Alignment.bottomRight,
+                      begin: Alignment.topLeft))
+              : BoxDecoration(
+                  image: DecorationImage(
+                      image:
+                          AssetImage(imageThemes[selectedElement].largeImage),
+                      fit: BoxFit.fill)),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -41,7 +45,6 @@ class _SubStickersState extends State<SubStickers> {
                   height: AppBar().preferredSize.height,
                   child: Row(children: [
                     Expanded(
-                      // flex: 1,
                       child: IconButton(
                         onPressed: () {
                           Get.back();
@@ -59,7 +62,6 @@ class _SubStickersState extends State<SubStickers> {
                       ),
                     ),
                     Expanded(
-                      // flex: 1,
                       child: Text(
                         '',
                         style: myTextStyle(18, FontWeight.w300, kWhiteColor),
@@ -67,41 +69,42 @@ class _SubStickersState extends State<SubStickers> {
                     )
                   ]),
                 ),
-
                 Container(
                   // color: Colors.yellow,
                   margin: const EdgeInsets.only(right: 5),
                   child: StreamBuilder<QuerySnapshot>(
-                      stream: FirebaseFirestore.instance.collection('SubStickers').where('title',isEqualTo: widget.title).snapshots(),
+                      stream: FirebaseFirestore.instance
+                          .collection('SubStickers')
+                          .where('title', isEqualTo: widget.title)
+                          .snapshots(),
                       builder: (context, snapshot) {
-
-
-                        if(!snapshot.hasData){
-                          return const Center(child: CircularProgressIndicator(),);
+                        if (!snapshot.hasData) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
                         }
 
                         final data = snapshot.data!.docs;
 
                         return GridView.builder(
-                            itemCount:data.length,
+                            itemCount: data.length,
                             shrinkWrap: true,
-                            physics:const NeverScrollableScrollPhysics(),
-                            gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
-                                childAspectRatio: 0.65,
-                                crossAxisCount: 3,
-                                mainAxisSpacing: 4,
-                                crossAxisSpacing: 4),
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    childAspectRatio: 0.65,
+                                    crossAxisCount: 3,
+                                    mainAxisSpacing: 4,
+                                    crossAxisSpacing: 4),
                             itemBuilder: (ctx, i) {
-
-
-                              SubSticker sticker = SubSticker.fromJson(data[i].data());
+                              SubSticker sticker =
+                                  SubSticker.fromJson(data[i].data());
 
                               return GestureDetector(
                                 onTap: () {
                                   Get.to(() => ImageEditorPro(
-                                    backgroundImagePath:
-                                   sticker.image!,
-                                  ));
+                                        backgroundImagePath: sticker.image!,
+                                      ));
                                 },
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(5.0),
@@ -112,10 +115,8 @@ class _SubStickersState extends State<SubStickers> {
                                 ),
                               );
                             });
-                      }
-                  ),
+                      }),
                 ),
-
               ],
             ),
           ),

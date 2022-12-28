@@ -55,20 +55,20 @@ class MyDrawer extends StatelessWidget {
                 ),
                 _createDrawerItem(
                     image: 'images/college.png',
-                    text: 'Photo College',
+                    text: 'Photo College'.tr,
                     onTap: () => Get.to(() => const CollageScreen())),
                 _createDrawerItem(
                   image: 'images/edit-image.png',
-                  text: 'My Creative',
+                  text: 'My Creative'.tr,
                   onTap: () => Get.to(() => const MyCreative()),
                 ),
                 _createDrawerItem(
                     image: 'images/background.png',
-                    text: 'Background',
+                    text: 'Background'.tr,
                     onTap: () => Get.to(() => const BackgroundScreen())),
                 _createDrawerItem(
                     image: 'images/newIcons/page-layout 1.png',
-                    text: 'Template',
+                    text: 'Template'.tr,
                     onTap: () => Get.to(() => const Template())),
                 ListTile(
                   leading: SizedBox(
@@ -84,9 +84,7 @@ class MyDrawer extends StatelessWidget {
                     style: myTextStyle(16, FontWeight.w300, kWhiteColor),
                   ),
                   trailing: Text(
-                    SHelper.sHelper.getLanguge().toString() == "ar"
-                        ? "عربى"
-                        : "English",
+                    SHelper.sHelper.getLanguge() == "ar" ? "English" : "عربى",
                     style: myTextStyle(16, FontWeight.w300, kWhiteColor),
                   ),
                   onTap: () {

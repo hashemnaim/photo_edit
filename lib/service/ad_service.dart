@@ -12,7 +12,7 @@ class AdmobService {
         size:
             AdSize.banner, // test id "ca-app-pub-3940256099942544/6300978111",
         adUnitId: Platform.isAndroid
-            ? "ca-app-pub-3940256099942544/6300978111"
+            ? "ca-app-pub-8645993540070406/2359966300"
             : Platform.isIOS
                 ? "ca-app-pub-3940256099942544/2934735716"
                 : '',
@@ -22,7 +22,6 @@ class AdmobService {
                 print("Add Loaded $ad");
               }
             },
-
             onAdClicked: (a) {},
             onAdFailedToLoad: (ad, er) {
               if (kDebugMode) {
@@ -37,7 +36,7 @@ class AdmobService {
   static initilizeInterstitial() {
     InterstitialAd.load(
         adUnitId: Platform.isAndroid
-            ? 'ca-app-pub-3940256099942544/1033173712'
+            ? 'ca-app-pub-8645993540070406/6981737592'
             : Platform.isIOS
                 ? 'ca-app-pub-3940256099942544/4411468910'
                 : '',

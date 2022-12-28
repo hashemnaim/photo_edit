@@ -1,7 +1,7 @@
 import '../views/Editor/imports.dart';
 
 Future<File> cropImage(File image) async {
-  File? croppedFile = await ImageCropper().cropImage(
+  CroppedFile? croppedFile = await ImageCropper().cropImage(
     sourcePath: image.path,
     aspectRatioPresets: Platform.isAndroid
         ? [
@@ -21,20 +21,20 @@ Future<File> cropImage(File image) async {
             CropAspectRatioPreset.ratio7x5,
             CropAspectRatioPreset.ratio16x9
           ],
-    androidUiSettings: AndroidUiSettings(
-        toolbarTitle: 'Crop Image',
-        toolbarColor: const Color(0xff49ADF3),
-        toolbarWidgetColor: kWhiteColor,
-        initAspectRatio: CropAspectRatioPreset.original,
-        activeControlsWidgetColor: const Color(0xff49ADF3),
-        lockAspectRatio: false),
-    iosUiSettings: const IOSUiSettings(
-      title: 'Cropper',
-    ),
+    // androidUiSettings: AndroidUiSettings(
+    //     toolbarTitle: 'Crop Image',
+    //     toolbarColor: const Color(0xff49ADF3),
+    //     toolbarWidgetColor: kWhiteColor,
+    //     initAspectRatio: CropAspectRatioPreset.original,
+    //     activeControlsWidgetColor: const Color(0xff49ADF3),
+    //     lockAspectRatio: false),
+    // iosUiSettings: const IOSUiSettings(
+    //   title: 'Cropper',
+    // ),
   );
   if (croppedFile != null) {
-    image = croppedFile;
+    image = File(croppedFile.path);
   }
 
-  return image;
+  return File(image.path);
 }

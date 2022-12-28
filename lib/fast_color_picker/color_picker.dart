@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:spring_button/spring_button.dart';
-
 import 'constants.dart';
 
 final Map<int, double> _correctSizes = {};
@@ -10,9 +9,9 @@ final PageController pageController = PageController(keepPage: true);
 
 // ignore: must_be_immutable
 class FastColorPickers extends StatelessWidget {
-   Color? selectedColor;
-    IconData? icon;
-    Function(Color)? onColorSelected;
+  Color? selectedColor;
+  IconData? icon;
+  Function(Color)? onColorSelected;
   double? width = Get.width;
 
   FastColorPickers(
@@ -65,7 +64,6 @@ class FastColorPickers extends StatelessWidget {
               )
             ],
           ),
-
           SmoothPageIndicator(
             controller: pageController, // PageController
             count: 3,
@@ -144,11 +142,10 @@ class FastColorPickers extends StatelessWidget {
 
 // ignore: must_be_immutable
 class SelectedColor extends StatelessWidget {
-   Color? selectedColor;
-    IconData? icon;
+  Color? selectedColor;
+  IconData? icon;
 
-    SelectedColor({Key? key, this.selectedColor, this.icon})
-      : super(key: key);
+  SelectedColor({Key? key, this.selectedColor, this.icon}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

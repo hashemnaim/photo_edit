@@ -1,10 +1,26 @@
-
 import 'package:flutter/material.dart';
 
 import '../models/font_family_model.dart';
 import 'filters.dart';
 
 List<FontFamilyModel> myFontFamilyList = [
+  FontFamilyModel(fontName: 'a4_36'),
+  FontFamilyModel(fontName: "e4_38"),
+  FontFamilyModel(fontName: 'b4_AF'),
+  FontFamilyModel(fontName: 'd4_B0'),
+  FontFamilyModel(fontName: 'f66Hayah'),
+  FontFamilyModel(fontName: 'w23830-4_b0'),
+  FontFamilyModel(fontName: 's'),
+  FontFamilyModel(fontName: 'ArbFONTS-QTSManga-SemiBold'),
+  FontFamilyModel(fontName: "ArbFONTS-aref-bold"),
+  FontFamilyModel(fontName: 'ArbFONTS-aref-regular'),
+  FontFamilyModel(fontName: 'ArbFONTS-ArefRuqaa-Bold'),
+  FontFamilyModel(fontName: 'ArbFONTS-ArefRuqaa-Regular'),
+  FontFamilyModel(fontName: 'ArbFONTS-arefrusqsaa-bold'),
+  FontFamilyModel(fontName: 'ArbFONTS-arefruqasas-regular'),
+  FontFamilyModel(fontName: "ArbFONTS-bein-ar-normal"),
+  FontFamilyModel(fontName: "ArbFONTS-OMNES-ARABIC-REGULAR"),
+  FontFamilyModel(fontName: 'ArbFONTS-Ubuntu-Arabic_R'),
   FontFamilyModel(fontName: 'AEROBIC'),
   FontFamilyModel(fontName: "Astral Sisters"),
   FontFamilyModel(fontName: 'AwayStress'),
@@ -92,20 +108,21 @@ final List<List<double>> filters = [
 ];
 
 List<Shadow> myShadowList = [
-  Shadow(color: Colors.black, offset: Offset(5, 5), blurRadius: 5),
-  Shadow(color: Colors.red, offset: Offset(5, 5), blurRadius: 5),
-  Shadow(color: Colors.green, offset: Offset(5, 5), blurRadius: 5),
-  Shadow(color: Colors.purple, offset: Offset(5, 5), blurRadius: 5),
-  Shadow(color: Colors.blue, offset: Offset(5, 5), blurRadius: 5),
-  Shadow(color: Colors.orange, offset: Offset(5, 5), blurRadius: 5),
-  Shadow(color: Colors.purpleAccent, offset: Offset(5, 5), blurRadius: 5),
-  Shadow(color: Colors.teal, offset: Offset(5, 5), blurRadius: 5),
-  Shadow(color: Colors.yellow, offset: Offset(5, 5), blurRadius: 5),
+  const Shadow(color: Colors.black, offset: Offset(5, 5), blurRadius: 5),
+  const Shadow(color: Colors.red, offset: Offset(5, 5), blurRadius: 5),
+  const Shadow(color: Colors.green, offset: Offset(5, 5), blurRadius: 5),
+  const Shadow(color: Colors.purple, offset: Offset(5, 5), blurRadius: 5),
+  const Shadow(color: Colors.blue, offset: Offset(5, 5), blurRadius: 5),
+  const Shadow(color: Colors.orange, offset: Offset(5, 5), blurRadius: 5),
+  const Shadow(color: Colors.purpleAccent, offset: Offset(5, 5), blurRadius: 5),
+  const Shadow(color: Colors.teal, offset: Offset(5, 5), blurRadius: 5),
+  const Shadow(color: Colors.yellow, offset: Offset(5, 5), blurRadius: 5),
 ];
 
 final List<Color> myColorList = [
   Colors.transparent,
   Colors.red,
+  Colors.white,
   Colors.green,
   Colors.black,
   Colors.amberAccent,

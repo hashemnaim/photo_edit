@@ -4,12 +4,11 @@ import 'dart:math' as math;
 
 import '../models/text_model.dart';
 import '../utils/constants.dart';
+import '../utils/s_helpar.dart';
 import '../views/Editor/image_editor_pro.dart';
 
-SingleChildScrollView openFontFamilyWidget({Function? onBack,Widget? title,Function? onPress}) {
-
-
-
+SingleChildScrollView openFontFamilyWidget(
+    {Function? onBack, Widget? title, Function? onPress}) {
   return SingleChildScrollView(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,16 +36,16 @@ SingleChildScrollView openFontFamilyWidget({Function? onBack,Widget? title,Funct
             ),
           ],
         ),
-       const SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Container(
-          padding:const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: GridView.builder(
               itemCount: myFontFamilyList.length,
               shrinkWrap: true,
-              physics:const NeverScrollableScrollPhysics(),
-              gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 childAspectRatio: 4.0,
                 crossAxisCount: 2,
                 crossAxisSpacing: 10,
@@ -64,8 +63,7 @@ SingleChildScrollView openFontFamilyWidget({Function? onBack,Widget? title,Funct
                         widgetJson[currentIndex]
                             .myFontModel!
                             .textStyle!
-                            .copyWith(
-                            fontFamily: myFontFamilyList[i].fontName);
+                            .copyWith(fontFamily: myFontFamilyList[i].fontName);
 
                     onPress!();
                   },
@@ -73,7 +71,7 @@ SingleChildScrollView openFontFamilyWidget({Function? onBack,Widget? title,Funct
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       border: Border.all(
-                          color:const Color(0xff49ADF3).withOpacity(0.6)),
+                          color: const Color(0xff49ADF3).withOpacity(0.6)),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     // width: 70,
