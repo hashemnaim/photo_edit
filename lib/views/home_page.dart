@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          key: scaffoldKye, drawer: MyDrawer(), body: Home(scaffoldKye)),
+          key: scaffoldKye, drawer: const MyDrawer(), body: Home(scaffoldKye)),
     );
   }
 }

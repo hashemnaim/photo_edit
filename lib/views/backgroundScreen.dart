@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../utils/app_colors.dart';
 import '../utils/theme.dart';
+import '../widgets/cash_network_image.dart';
 import '../widgets/textStyle.dart';
 import 'Editor/image_editor_pro.dart';
 
@@ -129,7 +130,7 @@ class _BackgroundScreenState extends State<BackgroundScreen> {
                                     },
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(5.0),
-                                      child: Image.network(
+                                      child: CachedNetworkImageShare(
                                         bg.image!,
                                         fit: BoxFit.cover,
                                       ),

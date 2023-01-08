@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:editor/models/sticker_model.dart';
 import 'package:editor/views/Editor/image_editor_pro.dart';
+import 'package:editor/views/Editor/imports.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../utils/app_colors.dart';
-import '../utils/theme.dart';
-import '../widgets/textStyle.dart';
+
+import '../widgets/cash_network_image.dart';
 
 class Template extends StatefulWidget {
   const Template({Key? key}) : super(key: key);
@@ -91,7 +91,6 @@ class _TemplateState extends State<Template> {
                         child: GridView.builder(
                             itemCount: data.length,
                             shrinkWrap: true,
-                            // controller: scrollController,
                             physics: const NeverScrollableScrollPhysics(),
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
@@ -102,18 +101,17 @@ class _TemplateState extends State<Template> {
                             itemBuilder: (ctx, i) {
                               BackgroundModel template =
                                   BackgroundModel.fromJson(data[i].data());
-
                               return GestureDetector(
                                 onTap: () {
                                   Get.to(() => ImageEditorPro(
-                                        backgroundImagePath: template.image!,
-                                      ));
+                                      backgroundImagePath: template.image!));
                                 },
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(5.0),
-                                  child: Image.network(
+                                  child: CachedNetworkImageShare(
+                                    // Image.network(
                                     template.image!,
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                               );

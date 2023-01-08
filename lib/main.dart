@@ -1,6 +1,8 @@
+import 'package:editor/splash_screen.dart';
 import 'package:editor/utils/s_helpar.dart';
 import 'package:editor/views/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,20 +38,24 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Text On Photo',
-      translations: Translation(),
-      locale: Locale(lang),
-      fallbackLocale: Locale(lang),
-      theme: ThemeData(
-        textTheme: SHelper.sHelper.getLanguge() == "ar"
-            ? GoogleFonts.cairoTextTheme()
-            : GoogleFonts.rajdhaniTextTheme(
-                Theme.of(context).textTheme,
-              ),
-      ),
-      home: const HomePage(),
-    );
+    return ScreenUtilInit(
+        designSize: const Size(375, 955),
+        builder: (context, widget) {
+          return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Text On Photo',
+            translations: Translation(),
+            locale: Locale(lang),
+            fallbackLocale: Locale(lang),
+            theme: ThemeData(
+              textTheme: SHelper.sHelper.getLanguge() == "ar"
+                  ? GoogleFonts.cairoTextTheme()
+                  : GoogleFonts.rajdhaniTextTheme(
+                      Theme.of(context).textTheme,
+                    ),
+            ),
+            home: const SplashScreen(),
+          );
+        });
   }
 }

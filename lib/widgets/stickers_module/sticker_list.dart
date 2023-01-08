@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../utils/app_colors.dart';
 import '../../views/subStickers.dart';
+import '../cash_network_image.dart';
 import '../textStyle.dart';
 
 class StickerListWidget extends StatelessWidget {
@@ -58,10 +59,8 @@ class StickerListWidget extends StatelessWidget {
                               width: double.infinity,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10.0),
-                                child: Image(
-                                  image: NetworkImage(
-                                    sticker.imageUrl!,
-                                  ),
+                                child: CachedNetworkImageShare(
+                                  sticker.imageUrl!,
                                   fit: BoxFit.cover,
                                 ),
                               )),

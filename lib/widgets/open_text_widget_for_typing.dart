@@ -25,24 +25,22 @@ textWidgetForTyping(
             width: Get.width,
             height: Get.height * 0.3,
             padding: const EdgeInsets.symmetric(horizontal: 21),
-            decoration: isColors
-                ? BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: isDark
-                            ? darkColors[selectedElement]
-                            : lightColors[selectedElement],
-                        end: Alignment.bottomRight,
-                        begin: Alignment.topLeft))
-                : BoxDecoration(
-                    image: DecorationImage(
-                        image:
-                            AssetImage(imageThemes[selectedElement].smallImage),
-                        fit: BoxFit.fill)),
+            // decoration: isColors
+            //     ? BoxDecoration(
+            //         gradient: LinearGradient(
+            //             colors: isDark
+            //                 ? darkColors[selectedElement]
+            //                 : lightColors[selectedElement],
+            //             end: Alignment.bottomRight,
+            //             begin: Alignment.topLeft))
+            //     : BoxDecoration(
+            //         image: DecorationImage(
+            //             image:
+            //                 AssetImage(imageThemes[selectedElement].smallImage),
+            //             fit: BoxFit.fill)),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 30,
-                ),
+                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -63,7 +61,7 @@ textWidgetForTyping(
                       ),
                     ),
                     Text(
-                      "Add Text",
+                      "Add Text".tr,
                       style: TextStyle(
                           color: kWhiteColor,
                           fontWeight: FontWeight.w400,
@@ -110,7 +108,7 @@ textWidgetForTyping(
 
                         if (text.name == null || name.text.isEmpty) {
                           if (kDebugMode) {
-                            print('text is empty');
+                            print('text is empty'.tr);
                           }
                         } else {
                           onSubmit(selectedIndex, text);
@@ -133,9 +131,9 @@ textWidgetForTyping(
                 ),
                 const Spacer(),
                 TextField(
-                  style: TextStyle(color: kWhiteColor),
+                  style: const TextStyle(color: kBlackColor),
                   decoration: InputDecoration(
-                    hintText: 'Enter Text',
+                    hintText: 'Enter Text'.tr,
                     hintStyle: myTextStyle(
                         16, FontWeight.w200, kWhiteColor.withOpacity(0.5)),
                     filled: true,

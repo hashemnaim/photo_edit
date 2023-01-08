@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
 import 'package:editor/views/Editor/block_picker.dart' as block;
-import '../../widgets/custom_button.dart';
 import 'bottomBarContainer.dart' as b;
 import 'emojies_view.dart' as e;
 
@@ -419,9 +418,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
+                  const SizedBox(width: 10),
                 ]),
               ),
               Expanded(
@@ -523,7 +520,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
                                                                           alignment:
                                                                               Alignment.center,
                                                                           fit: BoxFit
-                                                                              .cover,
+                                                                              .contain,
                                                                           image:
                                                                               FileImage(_image!),
                                                                         ),
@@ -949,9 +946,7 @@ class _ImageEditorProState extends State<ImageEditorPro> {
   ListView openMainMenuWidget(BuildContext context) {
     return ListView(
       children: [
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 20),
         Row(
           children: [
             b.BottomBarContainer(

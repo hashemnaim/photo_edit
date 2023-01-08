@@ -29,7 +29,10 @@ dependencies:
   screenshot: ^1.2.3
   emoji_picker_flutter: ^1.5.1
   image_picker: ^0.8.6
+  cached_network_image: ^3.2.3
+  flutter_screenutil: ^5.6.0
   image_cropper: ^3.0.1
+  skeleton_text: ^3.0.0
   share_plus: ^6.3.0
   gallery_saver: ^2.3.2
   flutter_staggered_grid_view: ^0.6.2
@@ -83,82 +86,57 @@ flutter:
     - family: Brown Choco
       fonts:
         - asset: fonts/Brown Choco.ttf
-
     - family: Calligraffitti
       fonts:
         - asset: fonts/Calligraffitti-Regular.ttf
-
     - family: DSFette
       fonts:
         - asset: fonts/DSFetteGotisch.ttf
-
     - family: Exo
       fonts:
         - asset: fonts/evanescent.ttf
-
     - family: FingerPaint
       fonts:
         - asset: fonts/FingerPaint-Regular.ttf
-
-
     - family: Hartford
       fonts:
         - asset: fonts/Hartford Demo.ttf
-
-
     - family: Herdrey
       fonts:
         - asset: fonts/herdrey demo.ttf
-
-
     - family: Jelle
       fonts:
         - asset: fonts/Jellee-Roman.ttf
-
-
     - family: Junction
       fonts:
         - asset: fonts/Junction-regular.ttf
-
     - family: JustBe
       fonts:
         - asset: fonts/JustBeDemo-Regular.ttf
-
     - family: LillyMae
       fonts:
         - asset: fonts/LillyMae-Regular.ttf
-
     - family: LuxuriousScript
       fonts:
         - asset: fonts/LuxuriousScript-Regular.ttf
-
     - family: Margueritas
       fonts:
         - asset: fonts/Margueritas.ttf
-
-
     - family: MINUS
       fonts:
         - asset: fonts/MINUS_CRE.ttf
-
     - family: Rhonde
       fonts:
         - asset: fonts/Rhonde-Free.ttf
-
     - family: RubikWetPaint
       fonts:
         - asset: fonts/RubikWetPaint-Regular.ttf
-
     - family: Satanyc
       fonts:
         - asset: fonts/Satanyc Demoniac St.ttf
-
-
     - family: ShortStack
       fonts:
         - asset: fonts/ShortStack-Regular.ttf
-
-
     - family: TribalScript
       fonts:
         - asset: fonts/Tribal Script.ttf
@@ -177,44 +155,33 @@ flutter:
     - family: BeigeWave
       fonts:
         - asset: fonts/BeigeWave.ttf
-
     - family: Bigcups
       fonts:
         - asset: fonts/Bigcups.ttf
-
     - family: Caniago
       fonts:
         - asset: fonts/Caniago.ttf
-
-
     - family: Cartline Brush
       fonts:
         - asset: fonts/Cartline Brush.ttf
-
-
     - family: deserted-canyon
       fonts:
         - asset: fonts/deserted-canyon.ttf
-
     - family: DOLPHINES
       fonts:
         - asset: fonts/DOLPHINES.ttf
     - family: edinburg
       fonts:
         - asset: fonts/edinburg.ttf
-
     - family: Gesturally
       fonts:
         - asset: fonts/Gesturally.ttf
-
     - family: GlowingSkin
       fonts:
         - asset: fonts/GlowingSkin.ttf
-
     - family: GOLDEN
       fonts:
         - asset: fonts/GOLDEN.ttf
-
     - family: Highbary Sunfest
       fonts:
         - asset: fonts/Highbary Sunfest.ttf
@@ -222,11 +189,9 @@ flutter:
     - family: Hirarki Signature
       fonts:
         - asset: fonts/Hirarki Signature.ttf
-
     - family: Hugshack
       fonts:
         - asset: fonts/Hugshack.ttf
-
     - family: Januaryta
       fonts:
         - asset: fonts/Januaryta.ttf
@@ -269,13 +234,9 @@ flutter:
     - family: Qapitaly
       fonts:
         - asset: fonts/Qapitaly.ttf
-
-
     - family: QEBIL
       fonts:
         - asset: fonts/QEBIL.ttf
-
-
     - family: Qomarun
       fonts:
         - asset: fonts/Qomarun.ttf

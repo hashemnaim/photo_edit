@@ -58,6 +58,7 @@ Map<String, String> ar = {
   "Line Through": "عبر الخط",
   "Add Image": "اضافة صورة",
   "Add Text": "اضافة نص",
+  "Enter Text": "اكتب النص",
   "Birthday": "اعياد الميلاد",
   "Sport Cars": "سيارات رياضية",
   "Sport Bikes": "موتوسيكلات رياضية",
